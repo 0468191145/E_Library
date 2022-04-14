@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="224ff535c65b4977906061c922245186" Name="Diagram1">
+        <EntityTypeShape EntityType="E_LibraryModel.BaiGiang" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_LibraryModel.DeThi" Width="1.5" PointX="2.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_LibraryModel.LopHoc" Width="1.5" PointX="2.625" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_LibraryModel.MonHoc" Width="1.5" PointX="0.625" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_LibraryModel.Role" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_LibraryModel.sysdiagram" Width="1.5" PointX="4.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_LibraryModel.TaiLieu" Width="1.5" PointX="6.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_LibraryModel.TaiNguyen" Width="1.5" PointX="8.375" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="E_LibraryModel.HeThongThuVien" Width="1.5" PointX="4.75" PointY="0.5" />
+        <EntityTypeShape EntityType="E_LibraryModel.TaiKhoan" Width="1.5" PointX="8.625" PointY="3.875" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
