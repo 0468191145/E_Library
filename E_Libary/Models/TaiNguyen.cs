@@ -20,7 +20,7 @@ namespace E_Libary.Models
         public Nullable<int> MonHoc { get; set; }
         public string Lop { get; set; }
         public string ChuDe { get; set; }
-        public Nullable<int> NguoiChinhSua { get; set; }
+        public string NguoiChinhSua { get; set; }
         public Nullable<System.DateTime> NgayChinhSuaCuoi { get; set; }
         public Nullable<double> KichThuoc { get; set; }
     }

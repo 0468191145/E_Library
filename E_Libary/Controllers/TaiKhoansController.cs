@@ -14,7 +14,7 @@ namespace E_Libary.Controllers
 {
     public class TaiKhoansController : ApiController
     {
-        private E_LibraryEntities db = new E_LibraryEntities();
+        private E_LibraryEntities1 db = new E_LibraryEntities1();
 
         // GET: api/TaiKhoans/5
         [ResponseType(typeof(TaiKhoan))]

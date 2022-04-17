@@ -14,7 +14,7 @@ namespace E_Libary.Controllers
 {
     public class LopHocsController : ApiController
     {
-        private E_LibraryEntities db = new E_LibraryEntities();
+        private E_LibraryEntities1 db = new E_LibraryEntities1();
 
         [ResponseType(typeof(LopHoc))]
         public IHttpActionResult GetLopHoc(int id=-1)

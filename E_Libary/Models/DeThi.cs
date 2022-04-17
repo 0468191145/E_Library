@@ -14,7 +14,7 @@ namespace E_Libary.Models
     
     public partial class DeThi
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string LoaiFile { get; set; }
         public string TenDeThi { get; set; }
         public string MonHoc { get; set; }

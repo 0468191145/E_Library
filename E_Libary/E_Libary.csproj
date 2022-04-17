@@ -177,49 +177,58 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BaiGiang.cs">
-      <DependentUpon>E_Libary.tt</DependentUpon>
+      <DependentUpon>E_Library.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DeThi.cs">
-      <DependentUpon>E_Libary.tt</DependentUpon>
+      <DependentUpon>E_Library.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\E_Libary.Context.cs">
+    <Compile Include="Models\E_Library.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>E_Libary.Context.tt</DependentUpon>
+      <DependentUpon>E_Library.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\E_Libary.cs">
+    <Compile Include="Models\E_Library.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>E_Libary.tt</DependentUpon>
+      <DependentUpon>E_Library.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\E_Libary.Designer.cs">
+    <Compile Include="Models\E_Library.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>E_Libary.edmx</DependentUpon>
+      <DependentUpon>E_Library.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\HeThongThuVien.cs">
-      <DependentUpon>E_Libary.tt</DependentUpon>
+      <DependentUpon>E_Library.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LopHoc.cs">
-      <DependentUpon>E_Libary.tt</DependentUpon>
+      <DependentUpon>E_Library.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MonHoc.cs">
-      <DependentUpon>E_Libary.tt</DependentUpon>
+      <DependentUpon>E_Library.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Role.cs">
-      <DependentUpon>E_Libary.tt</DependentUpon>
+      <DependentUpon>E_Library.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>E_Libary.tt</DependentUpon>
+      <DependentUpon>E_Library.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TaiKhoan.cs">
-      <DependentUpon>E_Libary.tt</DependentUpon>
+      <DependentUpon>E_Library.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TaiLieu.cs">
-      <DependentUpon>E_Libary.tt</DependentUpon>
+      <DependentUpon>E_Library.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TaiNguyen.cs">
-      <DependentUpon>E_Libary.tt</DependentUpon>
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TepRieng.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongBao.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TroGiup.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -232,15 +241,15 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\E_Libary.Context.tt">
+    <Content Include="Models\E_Library.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>E_Libary.Context.cs</LastGenOutput>
-      <DependentUpon>E_Libary.edmx</DependentUpon>
+      <DependentUpon>E_Library.edmx</DependentUpon>
+      <LastGenOutput>E_Library.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\E_Libary.tt">
+    <Content Include="Models\E_Library.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>E_Libary.edmx</DependentUpon>
-      <LastGenOutput>E_Libary.cs</LastGenOutput>
+      <DependentUpon>E_Library.edmx</DependentUpon>
+      <LastGenOutput>E_Library.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -263,12 +272,12 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="Models\E_Libary.edmx">
+    <EntityDeploy Include="Models\E_Library.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>E_Libary.Designer.cs</LastGenOutput>
+      <LastGenOutput>E_Library.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\E_Libary.edmx.diagram">
-      <DependentUpon>E_Libary.edmx</DependentUpon>
+    <Content Include="Models\E_Library.edmx.diagram">
+      <DependentUpon>E_Library.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

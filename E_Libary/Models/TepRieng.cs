@@ -12,19 +12,13 @@ namespace E_Libary.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class HeThongThuVien
+    public partial class TepRieng
     {
         public int Id { get; set; }
-        public string MaTruong { get; set; }
-        public string TenTruong { get; set; }
-        public string LoaiTruong { get; set; }
-        public string HieuTruong { get; set; }
-        public string Website { get; set; }
-        public string TenThuVien { get; set; }
-        public string DiaChiTruyCap { get; set; }
-        public string SĐT { get; set; }
-        public string Email { get; set; }
-        public string NgonNgu { get; set; }
-        public string NienKhoa { get; set; }
+        public string TheLoai { get; set; }
+        public string TenTep { get; set; }
+        public string NguoiSua { get; set; }
+        public Nullable<System.DateTime> NgaySuaLanCuoi { get; set; }
+        public Nullable<double> KichThuoc { get; set; }
     }
 }
