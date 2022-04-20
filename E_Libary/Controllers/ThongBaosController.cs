@@ -16,7 +16,7 @@ namespace E_Libary.Controllers
     {
         private E_LibraryEntities1 db = new E_LibraryEntities1();
 
-        // GET: api/ThongBaos/5
+        // GET: api/ThongBaos/
         [ResponseType(typeof(ThongBao))]
         public IHttpActionResult GetThongBao(int id = -1)
         {

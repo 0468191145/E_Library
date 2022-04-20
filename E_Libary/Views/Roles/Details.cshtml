@@ -1,0 +1,91 @@
+﻿@model E_Libary.Models.Role
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Role</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenVaiTro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenVaiTro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MonHoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MonHoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TepRiengTu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TepRiengTu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaiNguyen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiNguyen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.De)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.De)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThongBao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThongBao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhanQuyen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhanQuyen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NguoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NguoiDung)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

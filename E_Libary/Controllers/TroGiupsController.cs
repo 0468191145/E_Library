@@ -16,7 +16,7 @@ namespace E_Libary.Controllers
     {
         private E_LibraryEntities1 db = new E_LibraryEntities1();
 
-        // GET: api/TroGiups/5
+        // GET: api/TroGiups/
         [ResponseType(typeof(TroGiup))]
         public IHttpActionResult GetTroGiup(int id = -1)
         {

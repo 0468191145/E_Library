@@ -1,0 +1,83 @@
+﻿@model E_Libary.Models.BaiGiang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BaiGiang</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiFile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MonHoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MonHoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lop)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChuDe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChuDe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NguoiChinhSua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NguoiChinhSua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayChinhSuaCuoi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayChinhSuaCuoi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KichThuoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KichThuoc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

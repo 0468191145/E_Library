@@ -152,7 +152,8 @@
     <Property Name="PhanLoai" Type="nvarchar" MaxLength="50" />
     <Property Name="ChuDe" Type="nvarchar" MaxLength="100" />
     <Property Name="NoiDung" Type="nvarchar(max)" />
-    <Property Name="MaNguoiDung" Type="varchar" MaxLength="10" />
+    <Property Name="NguoiNhan" Type="varchar" MaxLength="10" />
+    <Property Name="NguoiGui" Type="varchar" MaxLength="10" />
     <Property Name="NgayThongBao" Type="datetime" />
     <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
   </EntityType>
@@ -160,7 +161,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TieuDe" Type="nvarchar" MaxLength="100" />
     <Property Name="NoiDung" Type="nvarchar(max)" />
     <Property Name="NguoiGui" Type="varchar" MaxLength="10" />

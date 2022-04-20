@@ -16,7 +16,7 @@ namespace E_Libary.Controllers
     {
         private E_LibraryEntities1 db = new E_LibraryEntities1();
 
-        // GET: api/TepRiengs/5
+        // GET: api/TepRiengs/
         [ResponseType(typeof(TepRieng))]
         public IHttpActionResult GetTepRieng(int id = -1)
         {

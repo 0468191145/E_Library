@@ -144,18 +144,6 @@
     <Property Name="NgaySuaLanCuoi" Type="DateTime" Precision="3" />
     <Property Name="KichThuoc" Type="Double" />
   </EntityType>
-  <EntityType Name="ThongBao">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PhanLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ChuDe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="MaNguoiDung" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="NgayThongBao" Type="DateTime" Precision="3" />
-    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="TroGiup">
     <Key>
       <PropertyRef Name="Id" />
@@ -179,7 +167,20 @@
     <EntitySet Name="TaiLieux" EntityType="Self.TaiLieu" />
     <EntitySet Name="TaiNguyens" EntityType="Self.TaiNguyen" />
     <EntitySet Name="TepRiengs" EntityType="Self.TepRieng" />
-    <EntitySet Name="ThongBaos" EntityType="Self.ThongBao" />
     <EntitySet Name="TroGiups" EntityType="Self.TroGiup" />
+    <EntitySet Name="ThongBaos" EntityType="E_LibraryModel.ThongBao" />
   </EntityContainer>
+  <EntityType Name="ThongBao">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PhanLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ChuDe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NguoiNhan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NguoiGui" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NgayThongBao" Type="DateTime" Precision="3" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

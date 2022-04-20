@@ -18,7 +18,8 @@ namespace E_Libary.Models
         public string PhanLoai { get; set; }
         public string ChuDe { get; set; }
         public string NoiDung { get; set; }
-        public string MaNguoiDung { get; set; }
+        public string NguoiNhan { get; set; }
+        public string NguoiGui { get; set; }
         public Nullable<System.DateTime> NgayThongBao { get; set; }
         public string TrangThai { get; set; }
     }

@@ -42,7 +42,7 @@ namespace E_Libary.Controllers
         {
             try
             {
-                var put = db.DeThis.SingleOrDefault(n => n.ID == id);
+                var put = db.DeThis.SingleOrDefault(n => n.Id == id);
                 if (put != null)
                 {
                     put.GhiChu= dethi.GhiChu;
@@ -96,7 +96,7 @@ namespace E_Libary.Controllers
         {
             try
             {
-                var delete = db.DeThis.SingleOrDefault(n => n.ID == id);
+                var delete = db.DeThis.SingleOrDefault(n => n.Id == id);
                 if (delete != null)
                 {
                     db.DeThis.Remove(delete);
@@ -122,7 +122,7 @@ namespace E_Libary.Controllers
 
         private bool DeThiExists(int id)
         {
-            return db.DeThis.Count(e => e.ID == id) > 0;
+            return db.DeThis.Count(e => e.Id == id) > 0;
         }
     }
 }

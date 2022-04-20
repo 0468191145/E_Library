@@ -1,0 +1,75 @@
+﻿@model E_Libary.Models.ThongBao
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ThongBao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PhanLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhanLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChuDe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChuDe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NguoiNhan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NguoiNhan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NguoiGui)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NguoiGui)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayThongBao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayThongBao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

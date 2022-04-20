@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="E_LibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="E_LibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BaiGiang">
           <Key>
             <PropertyRef Name="Id" />
@@ -157,7 +157,8 @@
           <Property Name="PhanLoai" Type="nvarchar" MaxLength="50" />
           <Property Name="ChuDe" Type="nvarchar" MaxLength="100" />
           <Property Name="NoiDung" Type="nvarchar(max)" />
-          <Property Name="MaNguoiDung" Type="varchar" MaxLength="10" />
+          <Property Name="NguoiNhan" Type="varchar" MaxLength="10" />
+          <Property Name="NguoiGui" Type="varchar" MaxLength="10" />
           <Property Name="NgayThongBao" Type="datetime" />
           <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -165,7 +166,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TieuDe" Type="nvarchar" MaxLength="100" />
           <Property Name="NoiDung" Type="nvarchar(max)" />
           <Property Name="NguoiGui" Type="varchar" MaxLength="10" />
@@ -187,8 +188,7 @@
           <EntitySet Name="ThongBao" EntityType="Self.ThongBao" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TroGiup" EntityType="Self.TroGiup" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="E_LibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -336,18 +336,6 @@
           <Property Name="NgaySuaLanCuoi" Type="DateTime" Precision="3" />
           <Property Name="KichThuoc" Type="Double" />
         </EntityType>
-        <EntityType Name="ThongBao">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PhanLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ChuDe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="MaNguoiDung" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="NgayThongBao" Type="DateTime" Precision="3" />
-          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="TroGiup">
           <Key>
             <PropertyRef Name="Id" />
@@ -371,9 +359,22 @@
           <EntitySet Name="TaiLieux" EntityType="Self.TaiLieu" />
           <EntitySet Name="TaiNguyens" EntityType="Self.TaiNguyen" />
           <EntitySet Name="TepRiengs" EntityType="Self.TepRieng" />
-          <EntitySet Name="ThongBaos" EntityType="Self.ThongBao" />
           <EntitySet Name="TroGiups" EntityType="Self.TroGiup" />
+          <EntitySet Name="ThongBaos" EntityType="E_LibraryModel.ThongBao" />
         </EntityContainer>
+        <EntityType Name="ThongBao">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhanLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChuDe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiNhan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NguoiGui" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NgayThongBao" Type="DateTime" Precision="3" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -535,19 +536,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ThongBaos">
-            <EntityTypeMapping TypeName="E_LibraryModel.ThongBao">
-              <MappingFragment StoreEntitySet="ThongBao">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PhanLoai" ColumnName="PhanLoai" />
-                <ScalarProperty Name="ChuDe" ColumnName="ChuDe" />
-                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
-                <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
-                <ScalarProperty Name="NgayThongBao" ColumnName="NgayThongBao" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TroGiups">
             <EntityTypeMapping TypeName="E_LibraryModel.TroGiup">
               <MappingFragment StoreEntitySet="TroGiup">
@@ -557,6 +545,20 @@
                 <ScalarProperty Name="NguoiGui" ColumnName="NguoiGui" />
                 <ScalarProperty Name="NgayGui" ColumnName="NgayGui" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThongBaos">
+            <EntityTypeMapping TypeName="E_LibraryModel.ThongBao">
+              <MappingFragment StoreEntitySet="ThongBao">
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="NgayThongBao" ColumnName="NgayThongBao" />
+                <ScalarProperty Name="NguoiGui" ColumnName="NguoiGui" />
+                <ScalarProperty Name="NguoiNhan" ColumnName="NguoiNhan" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="ChuDe" ColumnName="ChuDe" />
+                <ScalarProperty Name="PhanLoai" ColumnName="PhanLoai" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

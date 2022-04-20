@@ -1,0 +1,59 @@
+﻿@model E_Libary.Models.TepRieng
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TepRieng</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TheLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TheLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenTep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NguoiSua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NguoiSua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgaySuaLanCuoi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgaySuaLanCuoi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KichThuoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KichThuoc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
