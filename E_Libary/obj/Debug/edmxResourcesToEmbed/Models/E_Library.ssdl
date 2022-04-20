@@ -31,7 +31,7 @@
     <Property Name="TinhTrang" Type="bit" />
     <Property Name="PheDuyet" Type="bit" />
     <Property Name="NguoiPheDuyet" Type="varchar" MaxLength="10" />
-    <Property Name="GhiChu" Type="text" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="HeThongThuVien">
     <Key>
@@ -75,7 +75,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenVaiTro" Type="nvarchar" MaxLength="50" />
-    <Property Name="MoTa" Type="text" />
+    <Property Name="MoTa" Type="nvarchar(max)" />
     <Property Name="MonHoc" Type="int" />
     <Property Name="TepRiengTu" Type="int" />
     <Property Name="TaiNguyen" Type="int" />
@@ -117,7 +117,7 @@
     <Property Name="NguoiPheDuyet" Type="varchar" MaxLength="10" />
     <Property Name="NgayGui" Type="datetime" />
     <Property Name="TinhTrang" Type="nvarchar" MaxLength="20" />
-    <Property Name="GhiChu" Type="text" />
+    <Property Name="GhiChu" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="TaiNguyen">
     <Key>

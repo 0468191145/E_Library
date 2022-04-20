@@ -36,7 +36,7 @@
           <Property Name="TinhTrang" Type="bit" />
           <Property Name="PheDuyet" Type="bit" />
           <Property Name="NguoiPheDuyet" Type="varchar" MaxLength="10" />
-          <Property Name="GhiChu" Type="text" />
+          <Property Name="GhiChu" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="HeThongThuVien">
           <Key>
@@ -80,7 +80,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenVaiTro" Type="nvarchar" MaxLength="50" />
-          <Property Name="MoTa" Type="text" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
           <Property Name="MonHoc" Type="int" />
           <Property Name="TepRiengTu" Type="int" />
           <Property Name="TaiNguyen" Type="int" />
@@ -122,7 +122,7 @@
           <Property Name="NguoiPheDuyet" Type="varchar" MaxLength="10" />
           <Property Name="NgayGui" Type="datetime" />
           <Property Name="TinhTrang" Type="nvarchar" MaxLength="20" />
-          <Property Name="GhiChu" Type="text" />
+          <Property Name="GhiChu" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="TaiNguyen">
           <Key>
@@ -223,7 +223,7 @@
           <Property Name="TinhTrang" Type="Boolean" />
           <Property Name="PheDuyet" Type="Boolean" />
           <Property Name="NguoiPheDuyet" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="HeThongThuVien">
           <Key>
@@ -267,7 +267,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenVaiTro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MonHoc" Type="Int32" />
           <Property Name="TepRiengTu" Type="Int32" />
           <Property Name="TaiNguyen" Type="Int32" />
@@ -296,20 +296,6 @@
           <Property Name="MaNguoiDung" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="VaiTro" Type="Int32" />
-        </EntityType>
-        <EntityType Name="TaiLieu">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenTaiLieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MonHoc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="PhanLoai" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="NguoiTao" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="NguoiPheDuyet" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="NgayGui" Type="DateTime" Precision="3" />
-          <Property Name="TinhTrang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TaiNguyen">
           <Key>
@@ -356,11 +342,11 @@
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
-          <EntitySet Name="TaiLieux" EntityType="Self.TaiLieu" />
           <EntitySet Name="TaiNguyens" EntityType="Self.TaiNguyen" />
           <EntitySet Name="TepRiengs" EntityType="Self.TepRieng" />
           <EntitySet Name="TroGiups" EntityType="Self.TroGiup" />
           <EntitySet Name="ThongBaos" EntityType="E_LibraryModel.ThongBao" />
+          <EntitySet Name="TaiLieux" EntityType="E_LibraryModel.TaiLieu" />
         </EntityContainer>
         <EntityType Name="ThongBao">
           <Key>
@@ -374,6 +360,20 @@
           <Property Name="NguoiGui" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="NgayThongBao" Type="DateTime" Precision="3" />
           <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TaiLieu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenTaiLieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MonHoc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PhanLoai" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="NguoiTao" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NguoiPheDuyet" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NgayGui" Type="DateTime" Precision="3" />
+          <Property Name="TinhTrang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -494,21 +494,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TaiLieux">
-            <EntityTypeMapping TypeName="E_LibraryModel.TaiLieu">
-              <MappingFragment StoreEntitySet="TaiLieu">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TenTaiLieu" ColumnName="TenTaiLieu" />
-                <ScalarProperty Name="MonHoc" ColumnName="MonHoc" />
-                <ScalarProperty Name="PhanLoai" ColumnName="PhanLoai" />
-                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
-                <ScalarProperty Name="NguoiPheDuyet" ColumnName="NguoiPheDuyet" />
-                <ScalarProperty Name="NgayGui" ColumnName="NgayGui" />
-                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TaiNguyens">
             <EntityTypeMapping TypeName="E_LibraryModel.TaiNguyen">
               <MappingFragment StoreEntitySet="TaiNguyen">
@@ -558,6 +543,21 @@
                 <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
                 <ScalarProperty Name="ChuDe" ColumnName="ChuDe" />
                 <ScalarProperty Name="PhanLoai" ColumnName="PhanLoai" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaiLieux">
+            <EntityTypeMapping TypeName="E_LibraryModel.TaiLieu">
+              <MappingFragment StoreEntitySet="TaiLieu">
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+                <ScalarProperty Name="NgayGui" ColumnName="NgayGui" />
+                <ScalarProperty Name="NguoiPheDuyet" ColumnName="NguoiPheDuyet" />
+                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+                <ScalarProperty Name="PhanLoai" ColumnName="PhanLoai" />
+                <ScalarProperty Name="MonHoc" ColumnName="MonHoc" />
+                <ScalarProperty Name="TenTaiLieu" ColumnName="TenTaiLieu" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

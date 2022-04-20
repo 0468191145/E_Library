@@ -31,7 +31,7 @@
     <Property Name="TinhTrang" Type="Boolean" />
     <Property Name="PheDuyet" Type="Boolean" />
     <Property Name="NguoiPheDuyet" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="HeThongThuVien">
     <Key>
@@ -75,7 +75,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenVaiTro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="MonHoc" Type="Int32" />
     <Property Name="TepRiengTu" Type="Int32" />
     <Property Name="TaiNguyen" Type="Int32" />
@@ -104,20 +104,6 @@
     <Property Name="MaNguoiDung" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="VaiTro" Type="Int32" />
-  </EntityType>
-  <EntityType Name="TaiLieu">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TenTaiLieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="MonHoc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="PhanLoai" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="NguoiTao" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="NguoiPheDuyet" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="NgayGui" Type="DateTime" Precision="3" />
-    <Property Name="TinhTrang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="TaiNguyen">
     <Key>
@@ -164,11 +150,11 @@
     <EntitySet Name="Roles" EntityType="Self.Role" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
-    <EntitySet Name="TaiLieux" EntityType="Self.TaiLieu" />
     <EntitySet Name="TaiNguyens" EntityType="Self.TaiNguyen" />
     <EntitySet Name="TepRiengs" EntityType="Self.TepRieng" />
     <EntitySet Name="TroGiups" EntityType="Self.TroGiup" />
     <EntitySet Name="ThongBaos" EntityType="E_LibraryModel.ThongBao" />
+    <EntitySet Name="TaiLieux" EntityType="E_LibraryModel.TaiLieu" />
   </EntityContainer>
   <EntityType Name="ThongBao">
     <Key>
@@ -182,5 +168,19 @@
     <Property Name="NguoiGui" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="NgayThongBao" Type="DateTime" Precision="3" />
     <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TaiLieu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenTaiLieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MonHoc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PhanLoai" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="NguoiTao" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NguoiPheDuyet" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NgayGui" Type="DateTime" Precision="3" />
+    <Property Name="TinhTrang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

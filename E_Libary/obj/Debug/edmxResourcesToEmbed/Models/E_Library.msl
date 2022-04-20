@@ -114,21 +114,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TaiLieux">
-      <EntityTypeMapping TypeName="E_LibraryModel.TaiLieu">
-        <MappingFragment StoreEntitySet="TaiLieu">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="TenTaiLieu" ColumnName="TenTaiLieu" />
-          <ScalarProperty Name="MonHoc" ColumnName="MonHoc" />
-          <ScalarProperty Name="PhanLoai" ColumnName="PhanLoai" />
-          <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
-          <ScalarProperty Name="NguoiPheDuyet" ColumnName="NguoiPheDuyet" />
-          <ScalarProperty Name="NgayGui" ColumnName="NgayGui" />
-          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
-          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TaiNguyens">
       <EntityTypeMapping TypeName="E_LibraryModel.TaiNguyen">
         <MappingFragment StoreEntitySet="TaiNguyen">
@@ -178,6 +163,21 @@
           <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
           <ScalarProperty Name="ChuDe" ColumnName="ChuDe" />
           <ScalarProperty Name="PhanLoai" ColumnName="PhanLoai" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaiLieux">
+      <EntityTypeMapping TypeName="E_LibraryModel.TaiLieu">
+        <MappingFragment StoreEntitySet="TaiLieu">
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+          <ScalarProperty Name="NgayGui" ColumnName="NgayGui" />
+          <ScalarProperty Name="NguoiPheDuyet" ColumnName="NguoiPheDuyet" />
+          <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+          <ScalarProperty Name="PhanLoai" ColumnName="PhanLoai" />
+          <ScalarProperty Name="MonHoc" ColumnName="MonHoc" />
+          <ScalarProperty Name="TenTaiLieu" ColumnName="TenTaiLieu" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

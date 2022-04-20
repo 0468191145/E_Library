@@ -13,11 +13,11 @@
         <EntityTypeShape EntityType="E_LibraryModel.Role" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="E_LibraryModel.sysdiagram" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="E_LibraryModel.TaiKhoan" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="E_LibraryModel.TaiLieu" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="E_LibraryModel.TaiNguyen" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="E_LibraryModel.TepRieng" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="E_LibraryModel.TroGiup" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="E_LibraryModel.ThongBao" Width="1.5" PointX="3.375" PointY="9.75" />
+        <EntityTypeShape EntityType="E_LibraryModel.TaiLieu" Width="1.5" PointX="6.75" PointY="6.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
