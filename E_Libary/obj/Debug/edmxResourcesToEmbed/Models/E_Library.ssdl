@@ -69,6 +69,16 @@
     <Property Name="MoTa" Type="text" />
     <Property Name="ToBoMon" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="NhomNguoiDung">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaNhom" Type="nchar" MaxLength="10" />
+    <Property Name="TenNhom" Type="nvarchar" MaxLength="50" />
+    <Property Name="MoTa" Type="nvarchar(max)" />
+    <Property Name="NgayCapNhatGanNhat" Type="datetime" />
+  </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="Id" />
@@ -103,6 +113,7 @@
     <Property Name="PassWord" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="MaNguoiDung" Type="varchar" MaxLength="10" />
     <Property Name="Ten" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaNhom" Type="nchar" MaxLength="10" />
     <Property Name="VaiTro" Type="int" />
   </EntityType>
   <EntityType Name="TaiLieu">
@@ -174,6 +185,7 @@
     <EntitySet Name="HeThongThuVien" EntityType="Self.HeThongThuVien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LopHoc" EntityType="Self.LopHoc" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MonHoc" EntityType="Self.MonHoc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhomNguoiDung" EntityType="Self.NhomNguoiDung" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />

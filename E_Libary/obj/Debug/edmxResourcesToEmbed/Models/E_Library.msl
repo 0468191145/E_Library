@@ -102,18 +102,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TaiKhoans">
-      <EntityTypeMapping TypeName="E_LibraryModel.TaiKhoan">
-        <MappingFragment StoreEntitySet="TaiKhoan">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
-          <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
-          <ScalarProperty Name="Ten" ColumnName="Ten" />
-          <ScalarProperty Name="VaiTro" ColumnName="VaiTro" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TaiNguyens">
       <EntityTypeMapping TypeName="E_LibraryModel.TaiNguyen">
         <MappingFragment StoreEntitySet="TaiNguyen">
@@ -178,6 +166,30 @@
           <ScalarProperty Name="PhanLoai" ColumnName="PhanLoai" />
           <ScalarProperty Name="MonHoc" ColumnName="MonHoc" />
           <ScalarProperty Name="TenTaiLieu" ColumnName="TenTaiLieu" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhomNguoiDungs">
+      <EntityTypeMapping TypeName="E_LibraryModel.NhomNguoiDung">
+        <MappingFragment StoreEntitySet="NhomNguoiDung">
+          <ScalarProperty Name="NgayCapNhatGanNhat" ColumnName="NgayCapNhatGanNhat" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="TenNhom" ColumnName="TenNhom" />
+          <ScalarProperty Name="MaNhom" ColumnName="MaNhom" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaiKhoans">
+      <EntityTypeMapping TypeName="E_LibraryModel.TaiKhoan">
+        <MappingFragment StoreEntitySet="TaiKhoan">
+          <ScalarProperty Name="VaiTro" ColumnName="VaiTro" />
+          <ScalarProperty Name="MaNhom" ColumnName="MaNhom" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

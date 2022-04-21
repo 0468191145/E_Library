@@ -32,11 +32,12 @@ namespace E_Libary.Models
         public virtual DbSet<MonHoc> MonHocs { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<TaiNguyen> TaiNguyens { get; set; }
         public virtual DbSet<TepRieng> TepRiengs { get; set; }
         public virtual DbSet<TroGiup> TroGiups { get; set; }
         public virtual DbSet<ThongBao> ThongBaos { get; set; }
         public virtual DbSet<TaiLieu> TaiLieux { get; set; }
+        public virtual DbSet<NhomNguoiDung> NhomNguoiDungs { get; set; }
+        public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
     }
 }

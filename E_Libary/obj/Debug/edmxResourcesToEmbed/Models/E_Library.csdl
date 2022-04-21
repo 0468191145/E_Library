@@ -94,17 +94,6 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <EntityType Name="TaiKhoan">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="MaNguoiDung" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="VaiTro" Type="Int32" />
-  </EntityType>
   <EntityType Name="TaiNguyen">
     <Key>
       <PropertyRef Name="Id" />
@@ -149,12 +138,13 @@
     <EntitySet Name="MonHocs" EntityType="Self.MonHoc" />
     <EntitySet Name="Roles" EntityType="Self.Role" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-    <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
     <EntitySet Name="TaiNguyens" EntityType="Self.TaiNguyen" />
     <EntitySet Name="TepRiengs" EntityType="Self.TepRieng" />
     <EntitySet Name="TroGiups" EntityType="Self.TroGiup" />
     <EntitySet Name="ThongBaos" EntityType="E_LibraryModel.ThongBao" />
     <EntitySet Name="TaiLieux" EntityType="E_LibraryModel.TaiLieu" />
+    <EntitySet Name="NhomNguoiDungs" EntityType="E_LibraryModel.NhomNguoiDung" />
+    <EntitySet Name="TaiKhoans" EntityType="E_LibraryModel.TaiKhoan" />
   </EntityContainer>
   <EntityType Name="ThongBao">
     <Key>
@@ -182,5 +172,27 @@
     <Property Name="NgayGui" Type="DateTime" Precision="3" />
     <Property Name="TinhTrang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NhomNguoiDung">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaNhom" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TenNhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NgayCapNhatGanNhat" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PassWord" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MaNguoiDung" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaNhom" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="VaiTro" Type="Int32" />
   </EntityType>
 </Schema>

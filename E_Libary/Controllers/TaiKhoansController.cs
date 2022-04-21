@@ -22,7 +22,13 @@ namespace E_Libary.Controllers
         {
             if (id>0)
             {
-                TaiKhoan get = db.TaiKhoans.Find(id);
+                var get = (from s in db.Roles
+                           join c in db.TaiKhoans on s.Id equals c.VaiTro
+                           select new
+                           { 
+                                c.Id,c.UserName,c.MaNguoiDung,c.PassWord,c.Ten,c.MaNhom,s.TenVaiTro
+                           }
+                           ).OrderBy(x=>x.TenVaiTro).SingleOrDefault(t=>t.Id==id);
                 if (get == null)
                 {
                     return NotFound();
@@ -32,9 +38,22 @@ namespace E_Libary.Controllers
             }
             else
             {
-                return Ok(db.TaiKhoans);
+                var get = (from s in db.Roles
+                           join c in db.TaiKhoans on s.Id equals c.VaiTro
+                           select new
+                           {
+                               c.Id,
+                               c.UserName,
+                               c.MaNguoiDung,
+                               c.PassWord,
+                               c.Ten,
+                               c.MaNhom,
+                               s.TenVaiTro
+                           }).OrderBy(x => x.Id);
+                return Ok(get);
             }
         }
+
 
         // PUT: api/TaiKhoans/5
         [ResponseType(typeof(void))]
@@ -49,6 +68,7 @@ namespace E_Libary.Controllers
                     put.PassWord = taikhoan.PassWord;
                     put.MaNguoiDung = taikhoan.MaNguoiDung;
                     put.Ten = taikhoan.Ten;
+                    put.MaNhom = taikhoan.MaNhom;
                     put.VaiTro = taikhoan.VaiTro;
 
                     db.SaveChanges();
