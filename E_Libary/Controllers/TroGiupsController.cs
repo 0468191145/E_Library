@@ -36,32 +36,6 @@ namespace E_Libary.Controllers
             }
         }
 
-        // PUT: api/TroGiups/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutTroGiup(int id, TroGiup TroGiup)
-        {
-            try
-            {
-                var put = db.TroGiups.SingleOrDefault(n => n.Id == id);
-                if (put != null)
-                {
-                    put.TieuDe = TroGiup.TieuDe;
-                    put.NoiDung = TroGiup.NoiDung;
-                    put.NgayGui = TroGiup.NgayGui;
-                    put.NguoiGui = TroGiup.NguoiGui;
-                    put.TrangThai = TroGiup.TrangThai;
-
-                    db.SaveChanges();
-                    return Ok(put);
-                }
-                return BadRequest(ModelState);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ModelState);
-            }
-        }
-
         // POST= api/TroGiups
         [ResponseType(typeof(TroGiup))]
         public IHttpActionResult PostTroGiup(TroGiup TroGiup)

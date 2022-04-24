@@ -16,7 +16,7 @@ namespace E_Libary.Controllers
     {
         private E_LibraryEntities1 db = new E_LibraryEntities1();
 
-        // GET: api/ThuViens/5
+        // GET: api/ThuViens/5          Hiển thị thông tin hệ thống thư viện
         [ResponseType(typeof(HeThongThuVien))]
         public IHttpActionResult GetThuVien(int id = -1)
         {
@@ -36,7 +36,7 @@ namespace E_Libary.Controllers
             }
         }
 
-        // PUT: api/ThuViens/5
+        // PUT: api/ThuViens/5          Cập nhật thông tin hệ thống thư viện
         [ResponseType(typeof(void))]
         public IHttpActionResult PutThuVien(int id, HeThongThuVien thuvien)
         {
@@ -71,44 +71,7 @@ namespace E_Libary.Controllers
 
         // POST: api/ThuViens
         [ResponseType(typeof(HeThongThuVien))]
-        public IHttpActionResult PostThuVien(HeThongThuVien thuvien)
-        {
-            try
-            {
-                if (thuvien != null)
-                {
-                    db.HeThongThuViens.Add(thuvien);
-                    db.SaveChanges();
-                    return Ok(thuvien);
-                }
-                return BadRequest("Chưa nhập dữ liệu");
-            }
-            catch
-            {
-                return BadRequest("Lỗi");
-            }
-        }
-
-        // DELETE: api/ThuViens/5
-        [ResponseType(typeof(HeThongThuVien))]
-        public IHttpActionResult DeleteThuVien(int id)
-        {
-            try
-            {
-                var delete = db.HeThongThuViens.SingleOrDefault(n => n.Id == id);
-                if (delete != null)
-                {
-                    db.HeThongThuViens.Remove(delete);
-                    db.SaveChanges();
-                    return Ok("Xóa thành công");
-                }
-                return Ok("Không có dữ liệu cần tìm");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest("Lỗi");
-            }
-        }
+       
 
         protected override void Dispose(bool disposing)
         {

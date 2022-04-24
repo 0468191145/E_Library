@@ -15,11 +15,15 @@ namespace E_Libary.Models
     public partial class TaiLieu
     {
         public int Id { get; set; }
+        public Nullable<int> Ma { get; set; }
+        public string LoaiTep { get; set; }
         public string TenTaiLieu { get; set; }
-        public string MonHoc { get; set; }
-        public string PhanLoai { get; set; }
+        public Nullable<bool> PhanLoai { get; set; }
+        public string MaMon { get; set; }
+        public string TenMon { get; set; }
         public string NguoiTao { get; set; }
         public string NguoiPheDuyet { get; set; }
+        public Nullable<double> KichThuoc { get; set; }
         public Nullable<System.DateTime> NgayGui { get; set; }
         public string TinhTrang { get; set; }
         public string GhiChu { get; set; }

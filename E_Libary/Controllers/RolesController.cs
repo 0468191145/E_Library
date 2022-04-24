@@ -16,27 +16,47 @@ namespace E_Libary.Controllers
     {
         private E_LibraryEntities1 db = new E_LibraryEntities1();
 
-        // GET: api/Roles/5
-        [ResponseType(typeof(Role))]
-        public IHttpActionResult GetRole(int id = -1)
+        // GET: api/NhomNguoiDungs/5    Hiện danh sách các nhóm người dùng và hiện chi tiết các thành viên trong nhóm
+        [ResponseType(typeof(void))]
+        public IHttpActionResult GetRole(int ma = -1)
         {
-            if (id > 0)
+            if (ma > 0)
             {
-                Role role = db.Roles.Find(id);
-                if (role == null)
+                var get = (from s in db.Roles
+                           join c in db.NguoiDungs on s.Id equals c.VaiTro
+                           where s.Id == ma
+                           select new
+                           {
+                               s.TenVaiTro,
+                               c.MaNguoiDung,
+                               c.TenNguoiDung,
+                               c.Email,
+                               c.SDT,
+
+                           }
+                           ).OrderBy(x => x.TenVaiTro);
+                if (get == null)
                 {
                     return NotFound();
                 }
 
-                return Ok(role);
+                return Ok(get);
             }
             else
             {
-                return Ok(db.Roles);
+                var get = (from s in db.Roles
+                           select new
+                           {
+                               s.TenVaiTro,
+                               s.MoTa,
+                               s.NgayChinhSua
+                           }
+                           );
+                return Ok(get);
             }
         }
 
-        // PUT: api/Roles/5
+        // PUT: api/Roles/5             Cập nhật vai trò người dùng
         [ResponseType(typeof(void))]
         public IHttpActionResult PutRole(int id, Role role)
         {
@@ -54,6 +74,7 @@ namespace E_Libary.Controllers
                     put.TenVaiTro = role.TenVaiTro;
                     put.TepRiengTu = role.TepRiengTu;
                     put.ThongBao = role.ThongBao;
+                    put.NgayChinhSua = DateTime.Now;
 
 
                     db.SaveChanges();
@@ -67,7 +88,7 @@ namespace E_Libary.Controllers
             }
         }
 
-        // POST: api/Roles
+        // POST: api/Roles              Thêm vai trò người dùng
         [ResponseType(typeof(Role))]
         public IHttpActionResult PostRole(Role role)
         {
@@ -75,6 +96,7 @@ namespace E_Libary.Controllers
             {
                 if (role != null)
                 {
+                    role.NgayChinhSua = DateTime.Now;
                     db.Roles.Add(role);
                     db.SaveChanges();
                     return Ok(role);
@@ -87,8 +109,8 @@ namespace E_Libary.Controllers
             }
         }
 
-        // DELETE: api/Roles/5
-        [ResponseType(typeof(Role))]
+        // DELETE: api/Roles/5          Xóa vai trò người dùng
+        [ResponseType(typeof(Role))]   
         public IHttpActionResult DeleteRole(int id)
         {
             try

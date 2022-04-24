@@ -15,11 +15,8 @@ namespace E_Libary.Models
     public partial class TaiKhoan
     {
         public int Id { get; set; }
-        public string UserName { get; set; }
+        public string Username { get; set; }
         public string PassWord { get; set; }
         public string MaNguoiDung { get; set; }
-        public string Ten { get; set; }
-        public string MaNhom { get; set; }
-        public Nullable<int> VaiTro { get; set; }
     }
 }

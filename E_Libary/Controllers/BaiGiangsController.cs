@@ -16,43 +16,85 @@ namespace E_Libary.Controllers
     {
         private E_LibraryEntities1 db = new E_LibraryEntities1();
 
-        // GET: api/BaiGiangs/5
-        [ResponseType(typeof(BaiGiang))]
-        public IHttpActionResult GetBaiGiang(int id=-1)
+        // GET: api/BaiGiangs/5                 Lấy danh sách bài giảng
+        public IHttpActionResult GetBaiGiang(string mon = null, string ten = null)
         {
-            if (id > 0)
+            if (mon == null && ten == null)
             {
-                BaiGiang baigiang = db.BaiGiangs.Find(id);
-                if (baigiang == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(baigiang);
+                var get = (from c in db.BaiGiangs
+                           select new
+                           {
+                               c.Id,
+                               c.LoaiFile,
+                               c.Ten,
+                               c.TenMon,
+                               c.NguoiChinhSua,
+                               c.NgayChinhSuaCuoi,
+                               c.KichThuoc
+                           });
+                return Ok(get);
+            }
+            else if (mon != null)
+            {
+                return LocBaiGiang(mon);
             }
             else
             {
-                return Ok(db.BaiGiangs);
+                return TimKiemBaiGiang(ten);
             }
         }
 
-        // PUT: api/BaiGiangs/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutBaiGiang(int id, BaiGiang baigiang)
+        public IHttpActionResult TimKiemBaiGiang(string tukhoa)
+        {
+
+            var get = (from c in db.BaiGiangs
+                       where   c.Ten.Contains(tukhoa)
+                       select new
+                       {
+                           c.Id,
+                           c.LoaiFile,
+                           c.Ten,
+                           c.TenMon,
+                           c.NguoiChinhSua,
+                           c.NgayChinhSuaCuoi,
+                           c.KichThuoc
+                       }).OrderBy(x => x.Ten);
+
+            return Ok(get);
+        }
+
+        public IHttpActionResult LocBaiGiang(string tukhoa)
+        {
+
+            var get = (from c in db.BaiGiangs
+                       where  c.MaMon == tukhoa
+                       select new
+                       {
+                           c.Id,
+                           c.LoaiFile,
+                           c.Ten,
+                           c.TenMon,
+                           c.NguoiChinhSua,
+                           c.NgayChinhSuaCuoi,
+                           c.KichThuoc
+                       }).OrderBy(x => x.Ten);
+
+            return Ok(get);
+
+        }
+
+        // PUT: api/BaiGiangs/5                 Đổi tên bài giảng 
+        public IHttpActionResult PutBaiGiang(int id, string ten)
         {
             try
             {
-                var put = db.BaiGiangs.SingleOrDefault(n => n.Id == id);
+                var put = db.BaiGiangs.SingleOrDefault(n => n.Id == id );
                 if (put != null)
                 {
-                    put.LoaiFile = baigiang.LoaiFile;
-                    put.Ten = baigiang.Ten;
-                    put.MonHoc = baigiang.MonHoc;
-                    put.Lop = baigiang.Lop;
-                    put.ChuDe = baigiang.ChuDe;
-                    put.NguoiChinhSua = baigiang.NguoiChinhSua;
-                    put.NgayChinhSuaCuoi = baigiang.NgayChinhSuaCuoi;
-                    put.KichThuoc = baigiang.KichThuoc;
+                    if (ten != null)
+                    {
+                        put.Ten = ten;
+                    }
 
                     db.SaveChanges();
                     return Ok(put);
@@ -65,33 +107,66 @@ namespace E_Libary.Controllers
             }
         }
 
-        // POST= api/BaiGiangs
-        [ResponseType(typeof(BaiGiang))]
-        public IHttpActionResult PostBaiGiang(BaiGiang baiGiang)
+        //POST :api/BaiGiangs
+        public IHttpActionResult PostBaiGiang(BaiGiang baigiang)
+        {
+           
+                try
+                {
+                    if (baigiang != null)
+                    {
+                        baigiang.NgayChinhSuaCuoi = DateTime.Now;
+                        db.BaiGiangs.Add(baigiang);
+                        db.SaveChanges();
+                        return Ok(baigiang);
+                    }
+                    return BadRequest("Chưa nhập dữ liệu");
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest("Lỗi");
+                }
+           
+        }
+        public IHttpActionResult PostBaiGiangMonHoc(int id, string mon)
         {
             try
             {
-                if (baiGiang != null)
+                BaiGiang baigiang = db.BaiGiangs.SingleOrDefault(n => n.Id == id);
+                if (baigiang != null)
                 {
-                    db.BaiGiangs.Add(baiGiang);
+                    TaiLieu tailieu = new TaiLieu
+                    {
+                        Ma = baigiang.Id,
+                        LoaiTep = baigiang.LoaiFile,
+                        TenTaiLieu = baigiang.Ten,
+                        PhanLoai = true,
+                        MaMon = mon,
+                        NguoiTao=baigiang.NguoiChinhSua,
+                        NguoiPheDuyet= null,
+                        KichThuoc=baigiang.KichThuoc,
+                        TinhTrang="Chờ phê duyệt",
+                        NgayGui =DateTime.Now,
+                        GhiChu =""
+                    };
+                    db.TaiLieux.Add(tailieu);
                     db.SaveChanges();
-                    return Ok(baiGiang);
+                    return Ok(tailieu);
                 }
                 return BadRequest("Chưa nhập dữ liệu");
             }
-            catch
+            catch (Exception ex)
             {
                 return BadRequest("Lỗi");
             }
         }
 
-        // DELETE: api/BaiGiangs/5
-        [ResponseType(typeof(BaiGiang))]
+            //DELETE :api/BaiGiangs/5
         public IHttpActionResult DeleteBaiGiang(int id)
         {
             try
             {
-                var delete = db.BaiGiangs.SingleOrDefault(n => n.Id == id);
+                var delete = db.BaiGiangs.SingleOrDefault(n => n.Id == id );
                 if (delete != null)
                 {
                     db.BaiGiangs.Remove(delete);

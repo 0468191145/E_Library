@@ -48,7 +48,8 @@ namespace E_Libary.Controllers
                     put.GhiChu= dethi.GhiChu;
                     put.HinhThuc=dethi.HinhThuc;
                     put.LoaiFile=dethi.LoaiFile; 
-                    put.MonHoc=dethi.MonHoc;
+                    put.MaMon=dethi.MaMon;
+                    put.TenMon = dethi.TenMon;
                     put.NgayTao=dethi.NgayTao;
                     put.NgayThi=dethi.NgayThi;
                     put.NguoiPheDuyet=dethi.NguoiPheDuyet;

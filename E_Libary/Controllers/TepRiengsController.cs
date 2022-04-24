@@ -18,38 +18,60 @@ namespace E_Libary.Controllers
 
         // GET: api/TepRiengs/
         [ResponseType(typeof(TepRieng))]
-        public IHttpActionResult GetTepRieng(int id = -1)
+        public IHttpActionResult GetTepRieng(string loaitep=null,string tentep=null)
         {
-            if (id > 0)
-            {
-                TepRieng TepRieng = db.TepRiengs.Find(id);
-                if (TepRieng == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(TepRieng);
-            }
-            else
+            if (loaitep==null&&tentep==null)
             {
                 return Ok(db.TepRiengs);
             }
+            else if(loaitep!=null)
+            {
+                return LocTepRieng(loaitep);
+            }
+            else
+            {
+                return TimKiemTepRieng(tentep);
+            }
+        }
+
+        public IHttpActionResult TimKiemTepRieng(string tukhoa)
+        {
+
+            var get = (from c in db.TepRiengs
+                       where c.TenTep.Contains(tukhoa)
+                       select new
+                       {
+                          c
+                       });
+
+            return Ok(get);
+        }
+
+        public IHttpActionResult LocTepRieng(string tukhoa)
+        {
+
+            var get = (from c in db.TepRiengs
+                       where c.TheLoai.Contains(tukhoa)
+                       select new
+                       {
+                           c
+                       });
+
+            return Ok(get);
+
         }
 
         // PUT: api/TepRiengs/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutTepRieng(int id, TepRieng teprieng)
+        [HttpPut]
+        public IHttpActionResult PutTepRieng(int id, string teprieng)
         {
             try
             {
                 var put = db.TepRiengs.SingleOrDefault(n => n.Id == id);
                 if (put != null)
                 {
-                    put.TheLoai = teprieng.TheLoai;
-                    put.TenTep = teprieng.TenTep;
-                    put.NguoiSua = teprieng.NguoiSua;
-                    put.NgaySuaLanCuoi = teprieng.NgaySuaLanCuoi;
-                    put.KichThuoc = teprieng.KichThuoc;
+                    put.TenTep = teprieng;
 
                     db.SaveChanges();
                     return Ok(put);

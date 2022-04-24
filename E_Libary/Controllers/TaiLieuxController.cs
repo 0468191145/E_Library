@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using E_Libary.Models;
@@ -16,97 +11,102 @@ namespace E_Libary.Controllers
     {
         private E_LibraryEntities1 db = new E_LibraryEntities1();
 
-        // GET: api/TaiLieux/5
         [ResponseType(typeof(TaiLieu))]
-        public IHttpActionResult GetTaiLieu(int id = -1)
+        [Route("api/TaiLieux")]
+        public IHttpActionResult GetTaiLieux(string mon = null, string ten = null)
         {
-            if (id > 0)
+            if (mon == null && ten == null)
             {
-                TaiLieu tailieu = db.TaiLieux.Find(id);
-                if (tailieu == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(tailieu);
+                var get = (from c in db.TaiLieux
+                           select new
+                           {
+                               c.Id,
+                               c.LoaiTep,
+                               c.TenTaiLieu,
+                               PhanLoai= c.PhanLoai==true?"bài giảng":"tài nguyên",
+                               c.TenMon,
+                               NguoiGui= c.NguoiTao,
+                               c.NguoiPheDuyet,
+                               c.NgayGui,
+                               c.TinhTrang,
+                               c.KichThuoc
+                           });
+                return Ok(get);
+            }
+            else if (mon != null)
+            {
+                return LocTaiLieu(mon);
             }
             else
             {
-                return Ok(db.TaiLieux);
+                return TimKiemTaiLieu(ten);
             }
         }
 
-        // PUT: api/TaiLieux/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutTaiLieu(int id, TaiLieu tailieu)
+        public IHttpActionResult TimKiemTaiLieu(string tukhoa)
         {
-            try
-            {
-                var put = db.TaiLieux.SingleOrDefault(n => n.Id == id);
-                if (put != null)
-                {
-                    {
-                        put.TenTaiLieu = tailieu.TenTaiLieu;
-                        put.MonHoc = tailieu.MonHoc;
-                        put.PhanLoai = tailieu.PhanLoai;
-                        put.NguoiTao = tailieu.NguoiTao;
-                        put.NguoiPheDuyet = put.NguoiPheDuyet;
-                        put.NgayGui = tailieu.NgayGui;
-                        put.TinhTrang = tailieu.TinhTrang;
-                        put.GhiChu = tailieu.GhiChu;
-}
 
-                    db.SaveChanges();
-                    return Ok(put);
-                }
-                return BadRequest(ModelState);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ModelState);
-            }
+            var get = (from c in db.TaiLieux
+                       where  c.TenTaiLieu.Contains(tukhoa)
+                       select new
+                       {
+                           c.Id,
+                           c.LoaiTep,
+                           c.TenTaiLieu,
+                           c.TenMon,
+                           c.NguoiTao,
+                           c.NgayGui,
+                           c.KichThuoc
+                       }).OrderBy(x => x.TenTaiLieu);
+
+            return Ok(get);
         }
 
-        // POST: api/TaiLieux
-        [ResponseType(typeof(TaiLieu))]
-        public IHttpActionResult PostTaiLieu(TaiLieu tailieu)
+        public IHttpActionResult LocTaiLieu(string tukhoa)
         {
-            try
-            {
+
+            var get = (from c in db.TaiLieux
+                       where c.MaMon == tukhoa
+                       select new
+                       {
+                               c.Id,
+                           c.LoaiTep,
+                           c.TenTaiLieu,
+                           c.TenMon,
+                           c.NguoiTao,
+                           c.NgayGui,
+                           c.KichThuoc
+                       }).OrderBy(x => x.TenTaiLieu);
+
+            return Ok(get);
+
+        }
+
+        [Route("api/TaiLieux")]
+        [HttpPut]
+        public IHttpActionResult PheDuyet(int id,string nguoipheduyet, string tinhtrang,string ghichu=null)
+        {
+            TaiLieu tailieu = db.TaiLieux.SingleOrDefault(n => n.Id == id);
+            try {
                 if (tailieu != null)
                 {
-                    db.TaiLieux.Add(tailieu);
+                    tailieu.NguoiPheDuyet = nguoipheduyet;
+                    tailieu.TinhTrang = tinhtrang;
+                    tailieu.GhiChu = ghichu;
                     db.SaveChanges();
                     return Ok(tailieu);
                 }
-                return BadRequest("Chưa nhập dữ liệu");
+                return NotFound();
             }
-            catch
+            catch(Exception ex)
             {
                 return BadRequest("Lỗi");
             }
+            
+
         }
 
-        // DELETE: api/TaiLieux/5
-        [ResponseType(typeof(TaiLieu))]
-        public IHttpActionResult DeleteTaiLieu(int id)
-        {
-            try
-            {
-                var delete = db.TaiLieux.SingleOrDefault(n => n.Id == id);
-                if (delete != null)
-                {
-                    db.TaiLieux.Remove(delete);
-                    db.SaveChanges();
-                    return Ok("Xóa thành công");
-                }
-                return Ok("Không có dữ liệu cần tìm");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest("Lỗi");
-            }
-        }
+       
 
         protected override void Dispose(bool disposing)
         {

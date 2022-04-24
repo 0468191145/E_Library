@@ -15,7 +15,7 @@ namespace E_Libary.Models
     public partial class ThongBao
     {
         public int Id { get; set; }
-        public string PhanLoai { get; set; }
+        public Nullable<bool> PhanLoai { get; set; }
         public string ChuDe { get; set; }
         public string NoiDung { get; set; }
         public string NguoiNhan { get; set; }

@@ -18,60 +18,47 @@ namespace E_Libary.Controllers
 
         // GET: api/ThongBaos/
         [ResponseType(typeof(ThongBao))]
-        public IHttpActionResult GetThongBao(int id = -1)
+        [HttpGet]
+        public IHttpActionResult GetThongBao(bool phanloai=true)
         {
-            if (id > 0)
-            {
-                ThongBao ThongBao = db.ThongBaos.Find(id);
+           
+                List<ThongBao> ThongBao = db.ThongBaos.Where(n=>n.PhanLoai==phanloai).ToList();
                 if (ThongBao == null)
                 {
                     return NotFound();
                 }
 
                 return Ok(ThongBao);
-            }
-            else
-            {
-                return Ok(db.ThongBaos);
-            }
+           
         }
-
-        // PUT: api/ThongBaos/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutThongBao(int id, ThongBao ThongBao)
+        [Route("api/ThongBaos/TimKiem")]
+        [HttpGet]
+        public IHttpActionResult TimKiemThongBao(string tukhoa,bool phanloai=true )
         {
-            try
-            {
-                var put = db.ThongBaos.SingleOrDefault(n => n.Id == id);
-                if (put != null)
-                {
-                    put.PhanLoai = ThongBao.PhanLoai;
-                    put.ChuDe = ThongBao.ChuDe;
-                    put.NoiDung = ThongBao.NoiDung;
-                    put.NguoiGui = ThongBao.NguoiGui;
-                    put.NguoiNhan = ThongBao.NguoiNhan;
-                    put.TrangThai = ThongBao.TrangThai;
-                    put.NgayThongBao = ThongBao.NgayThongBao;
 
-                    db.SaveChanges();
-                    return Ok(put);
-                }
-                return BadRequest(ModelState);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ModelState);
-            }
+            var get = (from c in db.ThongBaos
+                       where (c.NoiDung.Contains(tukhoa)||c.ChuDe.Contains(tukhoa))&& c.PhanLoai==phanloai
+                       select new
+                       {
+                           c.NguoiGui,
+                           c.NoiDung,
+                           c.NgayThongBao
+                           
+                       }).OrderBy(x => x.NgayThongBao);
+
+            return Ok(get);
         }
 
         // POST= api/ThongBaos
         [ResponseType(typeof(ThongBao))]
-        public IHttpActionResult PostThongBao(ThongBao ThongBao)
+        public IHttpActionResult PostThongBao(ThongBao ThongBao, bool phanloai=true)
         {
             try
             {
                 if (ThongBao != null)
                 {
+                    ThongBao.PhanLoai = phanloai;
+                    ThongBao.NgayThongBao = DateTime.Now;
                     db.ThongBaos.Add(ThongBao);
                     db.SaveChanges();
                     return Ok(ThongBao);

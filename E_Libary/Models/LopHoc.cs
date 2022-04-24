@@ -15,6 +15,7 @@ namespace E_Libary.Models
     public partial class LopHoc
     {
         public int Id { get; set; }
+        public string MaLop { get; set; }
         public string Lop { get; set; }
         public string GVPhuTrach { get; set; }
     }

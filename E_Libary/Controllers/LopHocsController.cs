@@ -45,7 +45,6 @@ namespace E_Libary.Controllers
                 if(put!=null)
                 {
                     put.Lop = lopHoc.Lop;
-                    put.GVPhuTrach = lopHoc.GVPhuTrach;
                     db.SaveChanges();
                     return Ok(put);
                 }

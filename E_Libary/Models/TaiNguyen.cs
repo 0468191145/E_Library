@@ -17,7 +17,8 @@ namespace E_Libary.Models
         public int Id { get; set; }
         public string LoaiFile { get; set; }
         public string Ten { get; set; }
-        public Nullable<int> MonHoc { get; set; }
+        public string MaMon { get; set; }
+        public string TenMon { get; set; }
         public string Lop { get; set; }
         public string ChuDe { get; set; }
         public string NguoiChinhSua { get; set; }
