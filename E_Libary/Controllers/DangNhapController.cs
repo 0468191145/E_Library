@@ -21,9 +21,10 @@ namespace E_Libary.Controllers
         private E_LibraryEntities1 db = new E_LibraryEntities1();
         private SmtpClient client = new SmtpClient("smtp.gmail.com");
         private string _from = "ptai22092001@gmail.com";
-        private string _to = "0468191145@caothang.edu.vn";
-        private string _mymail = "ptai22092001@gmail.com";
-        private string _mypass = "9longgiang";
+        private string _to = "ptai22092001@gmail.com"; 
+        private string _subject = "Mã xác thực ";
+        private string _body = "22092001";
+
 
 
         // GET: api/DangNhap/5
@@ -37,23 +38,33 @@ namespace E_Libary.Controllers
                 return BadRequest("Nhập sai tài khoản hoặc mật khẩu");
             }
 
-            return Ok("Đăng nhập thành công");
+            var thongtin = from c in db.TaiKhoans
+                            join s in db.NguoiDungs on c.MaNguoiDung equals s.MaNguoiDung
+                            join v in db.Roles on s.VaiTro equals v.Id
+                            where c.Username == taikhoan.Username && taikhoan.PassWord == password
+                            select new
+                            {
+                                TenNguoiDung = s.TenNguoiDung,
+                                TenVaiTro=v.TenVaiTro
+                            };
+
+            return Ok(thongtin);
         }
 
         // PUT: api/DangNhap/5
 
         [Route("api/KhoiPhucMatKhau")]
         [HttpPost]
-        public string GetKhoiPhucmatkhau()
+        public async Task<string> GetKhoiPhucmatkhau()
         {
-            if(MailUtils.SendMail(_from, _to,
-                      "Gửi mail", "Nội dung Email", client))
+            try
             {
-                return "Gửi mail thành công";
+                var message = await MailUtils.SendMail(_from, _to, _subject, _body);
+                return message   ;
             }
-            else
+            catch (Exception ex)
             {
-                return "Gửi mail thất bại";
+                return ex.Message ;
             }
         }
         
