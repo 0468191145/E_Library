@@ -35,6 +35,16 @@
     <Property Name="NguoiPheDuyet" Type="varchar" MaxLength="10" />
     <Property Name="GhiChu" Type="nvarchar(max)" />
   </EntityType>
+  <EntityType Name="GiangDay">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaMon" Type="varchar" MaxLength="10" />
+    <Property Name="MaGV" Type="varchar" MaxLength="10" />
+    <Property Name="MaLop" Type="varchar" MaxLength="10" />
+    <Property Name="NienKhoa" Type="nchar" MaxLength="10" />
+  </EntityType>
   <EntityType Name="HeThongThuVien">
     <Key>
       <PropertyRef Name="Id" />
@@ -59,7 +69,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MaLop" Type="varchar" MaxLength="10" />
     <Property Name="Lop" Type="nvarchar" MaxLength="50" />
-    <Property Name="GVPhuTrach" Type="varchar" MaxLength="10" />
+    <Property Name="NienKhoa" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="MonHoc">
     <Key>
@@ -67,10 +77,11 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MaMon" Type="varchar" MaxLength="10" />
-    <Property Name="ToBoMon" Type="nvarchar" MaxLength="50" />
     <Property Name="TenMonHoc" Type="nvarchar" MaxLength="50" />
-    <Property Name="GiangVien" Type="varchar" MaxLength="10" />
     <Property Name="MoTa" Type="ntext" />
+    <Property Name="ToBoMon" Type="nvarchar" MaxLength="50" />
+    <Property Name="NienKhoa" Type="nchar" MaxLength="10" />
+    <Property Name="TinhTrang" Type="nvarchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="NguoiDung">
     <Key>
@@ -82,6 +93,18 @@
     <Property Name="Email" Type="text" />
     <Property Name="SDT" Type="char" MaxLength="10" />
     <Property Name="VaiTro" Type="int" />
+  </EntityType>
+  <EntityType Name="PhanCong">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaMon" Type="varchar" MaxLength="10" />
+    <Property Name="Mon" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaGV" Type="varchar" MaxLength="10" />
+    <Property Name="Lop" Type="varchar" MaxLength="10" />
+    <Property Name="ChuDe" Type="nvarchar" MaxLength="50" />
+    <Property Name="BaiGiang" Type="int" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -189,10 +212,12 @@
   <EntityContainer Name="E_LibraryModelStoreContainer">
     <EntitySet Name="BaiGiang" EntityType="Self.BaiGiang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DeThi" EntityType="Self.DeThi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GiangDay" EntityType="Self.GiangDay" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HeThongThuVien" EntityType="Self.HeThongThuVien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LopHoc" EntityType="Self.LopHoc" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MonHoc" EntityType="Self.MonHoc" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhanCong" EntityType="Self.PhanCong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />

@@ -16,9 +16,10 @@ namespace E_Libary.Models
     {
         public int Id { get; set; }
         public string MaMon { get; set; }
-        public string ToBoMon { get; set; }
         public string TenMonHoc { get; set; }
-        public string GiangVien { get; set; }
         public string MoTa { get; set; }
+        public string ToBoMon { get; set; }
+        public string NienKhoa { get; set; }
+        public string TinhTrang { get; set; }
     }
 }

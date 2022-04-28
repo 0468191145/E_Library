@@ -13,6 +13,9 @@ using E_Libary.Models;
 using Castle.Core.Smtp;
 using System.Threading.Tasks;
 using E_Libary.Mail;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using E_Libary.Session;
 
 namespace E_Libary.Controllers
 {
@@ -23,7 +26,7 @@ namespace E_Libary.Controllers
         private string _from = "ptai22092001@gmail.com";
         private string _to = "ptai22092001@gmail.com"; 
         private string _subject = "Mã xác thực ";
-        private string _body = "22092001";
+        private string _body = "Mã xác thực của bạn là ";
 
 
 
@@ -50,23 +53,68 @@ namespace E_Libary.Controllers
 
             return Ok(thongtin);
         }
+        [Route("api/NhapXacNhan")]
+        [HttpPost]
+        public IHttpActionResult PostXacNhan(string code)
+        {
+            string ss = UserLogin.code;
+            if(string.IsNullOrEmpty(ss))
+            {
+                return BadRequest("Lỗi");
+            }
+            if (ss == code)
+            {
+                return Ok("Xác thực thành công quay lại trang đặt lại mật khẩu /api/DatMatKhau");
+            }
+            else 
+                return BadRequest("Mã xác thực không đúng");
+        }
+        [Route("api/DatMatKhau")]
+        [HttpPut]
+        public IHttpActionResult PutMatKhau(string username,string pass)
+        {
+            var ss = db.TaiKhoans.SingleOrDefault(n=>n.Username==username) ;
+            if (ss==null)
+            {
+                return BadRequest("Lỗi không tìm thấy tài khoản");
+            }
+            ss.PassWord = pass;
+            db.SaveChanges();
+            
+            return Ok(string.Format("Cập nhật thành công \n {0}",ss));
+        }
 
-        // PUT: api/DangNhap/5
+
 
         [Route("api/KhoiPhucMatKhau")]
         [HttpPost]
-        public async Task<string> GetKhoiPhucmatkhau()
+        public async Task<string> GetKhoiPhucmatkhau(string username)
         {
+            var taikhoan = db.TaiKhoans.SingleOrDefault(n => n.Username == username);
+            if (taikhoan != null)
+            {
+                Random rd = new Random();
+                string code = "";
+                for (int i = 0; i < 6; i++)
+                {
+                    code += rd.Next(9);
+                }
+                _body += code;
+                UserLogin.code=code;
+                UserLogin.username = username;
+            }
+            else
+                return "Không tìm thấy tài khoản";
+
             try
             {
                 var message = await MailUtils.SendMail(_from, _to, _subject, _body);
-                return message   ;
+                return message+" /api/NhapXacNhan"   ;
             }
             catch (Exception ex)
             {
                 return ex.Message ;
             }
         }
-        
-    }
+     } 
 }

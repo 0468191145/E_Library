@@ -5,20 +5,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="665f722732f54da2bf700b4d4b72fed2" Name="Diagram1">
+        <EntityTypeShape EntityType="E_LibraryModel.BaiGiang" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="E_LibraryModel.DeThi" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="E_LibraryModel.HeThongThuVien" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="E_LibraryModel.LopHoc" Width="1.5" PointX="0.625" PointY="0.5" />
-        <EntityTypeShape EntityType="E_LibraryModel.MonHoc" Width="1.5" PointX="4.75" PointY="4.25" />
-        <EntityTypeShape EntityType="E_LibraryModel.Role" Width="1.5" PointX="0.625" PointY="2.5" />
-        <EntityTypeShape EntityType="E_LibraryModel.sysdiagram" Width="1.5" PointX="6.75" PointY="0.75" />
-        <EntityTypeShape EntityType="E_LibraryModel.TepRieng" Width="1.5" PointX="8.75" PointY="0.75" />
-        <EntityTypeShape EntityType="E_LibraryModel.TroGiup" Width="1.5" PointX="8.75" PointY="3.75" />
-        <EntityTypeShape EntityType="E_LibraryModel.NguoiDung" Width="1.5" PointX="6.625" PointY="6.75" />
-        <EntityTypeShape EntityType="E_LibraryModel.TaiKhoan" Width="1.5" PointX="2.75" PointY="4.875" />
-        <EntityTypeShape EntityType="E_LibraryModel.TaiNguyen" Width="1.5" PointX="6.625" PointY="3.5" />
-        <EntityTypeShape EntityType="E_LibraryModel.BaiGiang" Width="1.5" PointX="4.75" PointY="6.625" />
-        <EntityTypeShape EntityType="E_LibraryModel.ThongBao" Width="1.5" PointX="2.75" PointY="7" />
-        <EntityTypeShape EntityType="E_LibraryModel.TaiLieu" Width="1.5" PointX="0.625" PointY="5.75" />
+        <EntityTypeShape EntityType="E_LibraryModel.GiangDay" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="E_LibraryModel.HeThongThuVien" Width="1.5" PointX="0.625" PointY="3.875" />
+        <EntityTypeShape EntityType="E_LibraryModel.LopHoc" Width="1.5" PointX="4.75" PointY="2.875" />
+        <EntityTypeShape EntityType="E_LibraryModel.MonHoc" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="E_LibraryModel.NguoiDung" Width="1.5" PointX="2.75" PointY="4.875" />
+        <EntityTypeShape EntityType="E_LibraryModel.PhanCong" Width="1.5" PointX="4.75" PointY="4.875" />
+        <EntityTypeShape EntityType="E_LibraryModel.Role" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="E_LibraryModel.sysdiagram" Width="1.5" PointX="2.75" PointY="7.25" />
+        <EntityTypeShape EntityType="E_LibraryModel.TaiKhoan" Width="1.5" PointX="8.75" PointY="4.125" />
+        <EntityTypeShape EntityType="E_LibraryModel.TaiLieu" Width="1.5" PointX="6.75" PointY="3.375" />
+        <EntityTypeShape EntityType="E_LibraryModel.TaiNguyen" Width="1.5" PointX="8.75" PointY="6.125" />
+        <EntityTypeShape EntityType="E_LibraryModel.TepRieng" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="E_LibraryModel.ThongBao" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="E_LibraryModel.TroGiup" Width="1.5" PointX="10.75" PointY="6.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

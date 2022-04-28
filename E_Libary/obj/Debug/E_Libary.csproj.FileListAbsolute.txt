@@ -331,3 +331,7 @@ D:\code\0468191145\E_Libary\E_Libary\bin\System.IdentityModel.Tokens.Jwt.xml
 D:\code\0468191145\E_Libary\E_Libary\bin\System.Reflection.Metadata.xml
 D:\code\0468191145\E_Libary\E_Libary\bin\System.Threading.Tasks.Extensions.xml
 D:\code\0468191145\E_Libary\E_Libary\bin\System.ValueTuple.xml
+D:\code\0468191145\E_Libary\E_Libary\bin\Microsoft.AspNetCore.Session.dll
+D:\code\0468191145\E_Libary\E_Libary\bin\Microsoft.AspNetCore.Session.xml
+D:\code\0468191145\E_Libary\E_Libary\bin\System.Web.Providers.dll
+D:\code\0468191145\E_Libary\E_Libary\bin\System.Web.Providers.xml

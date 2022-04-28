@@ -152,6 +152,9 @@
     <Reference Include="Microsoft.AspNetCore.Routing.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.Routing.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Routing.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNetCore.Session, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Session.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Session.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.WebUtilities, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.WebUtilities.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.WebUtilities.dll</HintPath>
     </Reference>
@@ -409,6 +412,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -530,6 +536,14 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Models\GiangDay.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhanCong.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Session\User.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="Controllers\TaiNguyenController.cs" />
     <Compile Include="Controllers\BaiGiangsController.cs" />
     <Compile Include="Controllers\DangNhapController.cs" />
@@ -607,16 +621,6 @@
       <DependentUpon>E_Library.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\DeThisController.cs" />
-    <Compile Include="Views\HeThongThuViensController.cs" />
-    <Compile Include="Views\LopHocsController.cs" />
-    <Compile Include="Views\MonHocsController.cs" />
-    <Compile Include="Views\RolesController.cs" />
-    <Compile Include="Views\TaiKhoansController.cs" />
-    <Compile Include="Views\TaiLieuxController.cs" />
-    <Compile Include="Views\TepRiengsController.cs" />
-    <Compile Include="Views\ThongBaosController.cs" />
-    <Compile Include="Views\TroGiupsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -685,60 +689,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\DeThis\Create.cshtml" />
-    <Content Include="Views\DeThis\Delete.cshtml" />
-    <Content Include="Views\DeThis\Details.cshtml" />
-    <Content Include="Views\DeThis\Edit.cshtml" />
-    <Content Include="Views\DeThis\Index.cshtml" />
-    <Content Include="Views\LopHocs\Create.cshtml" />
-    <Content Include="Views\LopHocs\Delete.cshtml" />
-    <Content Include="Views\LopHocs\Details.cshtml" />
-    <Content Include="Views\LopHocs\Edit.cshtml" />
-    <Content Include="Views\LopHocs\Index.cshtml" />
-    <Content Include="Views\MonHocs\Create.cshtml" />
-    <Content Include="Views\MonHocs\Delete.cshtml" />
-    <Content Include="Views\MonHocs\Details.cshtml" />
-    <Content Include="Views\MonHocs\Edit.cshtml" />
-    <Content Include="Views\MonHocs\Index.cshtml" />
-    <Content Include="Views\Roles\Create.cshtml" />
-    <Content Include="Views\Roles\Delete.cshtml" />
-    <Content Include="Views\Roles\Details.cshtml" />
-    <Content Include="Views\Roles\Edit.cshtml" />
-    <Content Include="Views\Roles\Index.cshtml" />
-    <Content Include="Views\TaiKhoans\Create.cshtml" />
-    <Content Include="Views\TaiKhoans\Delete.cshtml" />
-    <Content Include="Views\TaiKhoans\Details.cshtml" />
-    <Content Include="Views\TaiKhoans\Edit.cshtml" />
-    <Content Include="Views\TaiKhoans\Index.cshtml" />
-    <Content Include="Views\TaiLieux\Create.cshtml" />
-    <Content Include="Views\TaiLieux\Delete.cshtml" />
-    <Content Include="Views\TaiLieux\Details.cshtml" />
-    <Content Include="Views\TaiLieux\Edit.cshtml" />
-    <Content Include="Views\TaiLieux\Index.cshtml" />
-    <Content Include="Views\TepRiengs\Create.cshtml" />
-    <Content Include="Views\TepRiengs\Delete.cshtml" />
-    <Content Include="Views\TepRiengs\Details.cshtml" />
-    <Content Include="Views\TepRiengs\Edit.cshtml" />
-    <Content Include="Views\TepRiengs\Index.cshtml" />
-    <Content Include="Views\ThongBaos\Create.cshtml" />
-    <Content Include="Views\ThongBaos\Delete.cshtml" />
-    <Content Include="Views\ThongBaos\Details.cshtml" />
-    <Content Include="Views\ThongBaos\Edit.cshtml" />
-    <Content Include="Views\ThongBaos\Index.cshtml" />
-    <Content Include="Views\TroGiups\Create.cshtml" />
-    <Content Include="Views\TroGiups\Delete.cshtml" />
-    <Content Include="Views\TroGiups\Details.cshtml" />
-    <Content Include="Views\TroGiups\Edit.cshtml" />
-    <Content Include="Views\TroGiups\Index.cshtml" />
-    <Content Include="Views\HeThongThuViens\Create.cshtml" />
-    <Content Include="Views\HeThongThuViens\Delete.cshtml" />
-    <Content Include="Views\HeThongThuViens\Details.cshtml" />
-    <Content Include="Views\HeThongThuViens\Edit.cshtml" />
-    <Content Include="Views\HeThongThuViens\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\DangNhap\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

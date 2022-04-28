@@ -17,22 +17,42 @@ namespace E_Libary.Controllers
     {
         private E_LibraryEntities1 db = new E_LibraryEntities1();
 
-        [ResponseType(typeof(LopHoc))]
-        public IHttpActionResult GetLopHoc(int id=-1)
+        [ResponseType(typeof(LopHoc))]              //Hiện danh sách lớp học
+        public IHttpActionResult GetLopHoc(string mon=null, string tenlop=null)
         {
-            if (id >0)
+            if (mon==null&&tenlop==null)
             {
-                LopHoc lopHoc = db.LopHocs.Find(id);
-                if (lopHoc == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(lopHoc);
+                return Ok(db.LopHocs);
+            }
+            else if(mon!=null)
+            {
+                var get = (from gd in db.GiangDays
+                           join m in db.MonHocs on gd.MaMon equals m.MaMon
+                           join l in db.LopHocs on gd.MaLop equals l.MaLop
+                           join gv in db.NguoiDungs on gd.MaGV equals gv.MaNguoiDung
+                           where gd.MaMon == mon
+                           select new
+                           {
+                               m.TenMonHoc,
+                               l.Lop,
+                               TenGV =gv.TenNguoiDung
+                           }).OrderBy(x => x.TenMonHoc);
+                return Ok(get);
             }
             else
             {
-                return Ok(db.LopHocs);
+                var get = (from gd in db.GiangDays
+                           join m in db.MonHocs on gd.MaMon equals m.MaMon
+                           join l in db.LopHocs on gd.MaLop equals l.MaLop
+                           join gv in db.NguoiDungs on gd.MaGV equals gv.MaNguoiDung
+                           where l.Lop.Contains(tenlop)
+                           select new
+                           {
+                               m.TenMonHoc,
+                               l.Lop,
+                               TenGV =gv.MaNguoiDung
+                           }).OrderBy(x => x.TenMonHoc);
+                return Ok(get);
             }
             
         }
@@ -94,15 +114,6 @@ namespace E_Libary.Controllers
             {
                 return BadRequest("Lỗi");
             }
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
 
         private bool LopHocExists(int id)

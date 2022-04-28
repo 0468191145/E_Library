@@ -16,28 +16,54 @@ namespace E_Libary.Controllers
     {
         private E_LibraryEntities1 db = new E_LibraryEntities1();
 
-        // GET: api/MonHocs/5
+        // GET: api/MonHocs/5                   Hiện danh sách môn và số tài liệu môn chờ phê duyệt 
         [ResponseType(typeof(MonHoc))]
-        public IHttpActionResult GetMonHoc(int id = -1)
+        public IHttpActionResult GetMonHoc(int id=-1, string tenmon=null)
         {
-            if (id > 0)
+            if (id  <=0)
             {
-                MonHoc monhoc = db.MonHocs.Find(id);
-                if (monhoc == null)
-                {
-                    return NotFound();
-                }
+                var monhoc = (from m in db.MonHocs
+                              select new
+                              {
+                                  m.MaMon,
+                                  m.TenMonHoc,
+                                  m.MoTa,
+                                  m.TinhTrang,
+                                  SoTaiLieuChoDuyet = (from t in db.TaiLieux
+                                                       where t.MaMon == m.MaMon && t.TinhTrang == "Chờ phê duyệt"
+                                                       select new
+                                                       {
+                                                       }
+                                                       ).Count()
+                              }
+                              );
+
 
                 return Ok(monhoc);
             }
             else
-            {
-                return Ok(db.MonHocs);
+                {
+                return ChiTietMonHoc(id);
             }
         }
+        public IHttpActionResult ChiTietMonHoc (int id )            //chi tiết môn học
 
-        // PUT: api/MonHocs/5
-        [ResponseType(typeof(void))]
+        {
+            var monhoc = (from m in db.MonHocs
+                          join g in db.GiangDays on m.MaMon equals g.MaMon
+                          join a in db.NguoiDungs on g.MaGV equals a.MaNguoiDung
+                          select new
+                          {
+                              m.MaMon,
+                              m.TenMonHoc,
+                              m.MoTa,
+                              GiangVien=a.TenNguoiDung
+                          }
+                              );
+            return Ok(monhoc);        }
+
+            // PUT: api/MonHocs/5               Cập nhật môn học
+            [ResponseType(typeof(void))]
         public IHttpActionResult PutMonHoc(int id, MonHoc monhoc)
         {
             try
@@ -48,7 +74,7 @@ namespace E_Libary.Controllers
                     put.MaMon = monhoc.MaMon;
                     put.TenMonHoc = monhoc.TenMonHoc;
                     put.MoTa = monhoc.MoTa;
-                    put.GiangVien = monhoc.GiangVien;
+                    put.NienKhoa = monhoc.NienKhoa;
                     put.ToBoMon = monhoc.ToBoMon;
                   
 
@@ -63,7 +89,7 @@ namespace E_Libary.Controllers
             }
         }
 
-        // POST: api/MonHocs
+        // POST: api/MonHocs                    Thêm môn học
         [ResponseType(typeof(MonHoc))]
         public IHttpActionResult PostMonHoc(MonHoc monhoc)
         {
@@ -74,6 +100,28 @@ namespace E_Libary.Controllers
                     db.MonHocs.Add(monhoc);
                     db.SaveChanges();
                     return Ok(monhoc);
+                }
+                return BadRequest("Chưa nhập dữ liệu");
+            }
+            catch
+            {
+                return BadRequest("Lỗi");
+            }
+        }
+
+        // POST: api/MonHocs/PhanCong           Phân công tài liệu
+
+        [Route("api/MonHocs/PhanCong")]
+        [HttpPost]
+        public IHttpActionResult PhanCongTaiLieu(PhanCong tailieu)
+        {
+            try
+            {
+                if (tailieu != null)
+                {
+                    db.PhanCongs.Add(tailieu);
+                    db.SaveChanges();
+                    return Ok(tailieu);
                 }
                 return BadRequest("Chưa nhập dữ liệu");
             }

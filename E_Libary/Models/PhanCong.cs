@@ -12,11 +12,14 @@ namespace E_Libary.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class LopHoc
+    public partial class PhanCong
     {
         public int Id { get; set; }
-        public string MaLop { get; set; }
+        public string MaMon { get; set; }
+        public string Mon { get; set; }
+        public string MaGV { get; set; }
         public string Lop { get; set; }
-        public string NienKhoa { get; set; }
+        public string ChuDe { get; set; }
+        public Nullable<int> BaiGiang { get; set; }
     }
 }
