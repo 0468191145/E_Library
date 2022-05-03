@@ -14,9 +14,18 @@ namespace E_Libary.Models
     
     public partial class LopHoc
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public LopHoc()
+        {
+            this.GiangDays = new HashSet<GiangDay>();
+        }
+    
         public int Id { get; set; }
         public string MaLop { get; set; }
         public string Lop { get; set; }
         public string NienKhoa { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GiangDay> GiangDays { get; set; }
     }
 }

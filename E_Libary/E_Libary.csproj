@@ -536,16 +536,53 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Models\BaiGiangs_TaiNguyens.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DeThi.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GiangDay.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HeThongThuVien.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LopHoc.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MonHoc.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NguoiDung.cs">
       <DependentUpon>E_Library.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PhanCong.cs">
       <DependentUpon>E_Library.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaiKhoan.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaiLieu.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TepRieng.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongBao.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TroGiup.cs">
+      <DependentUpon>E_Library.tt</DependentUpon>
+    </Compile>
     <Compile Include="Session\User.cs" />
-    <Compile Include="Startup.cs" />
-    <Compile Include="Controllers\TaiNguyenController.cs" />
-    <Compile Include="Controllers\BaiGiangsController.cs" />
+    <Compile Include="Controllers\BaiGiang_TaiNguyenController.cs" />
     <Compile Include="Controllers\DangNhapController.cs" />
     <Compile Include="Controllers\DeThisController.cs" />
     <Compile Include="Controllers\HeThongThuViensController.cs" />
@@ -563,12 +600,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mail\MailUtils.cs" />
-    <Compile Include="Models\BaiGiang.cs">
-      <DependentUpon>E_Library.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DeThi.cs">
-      <DependentUpon>E_Library.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\E_Library.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -583,42 +614,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>E_Library.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HeThongThuVien.cs">
-      <DependentUpon>E_Library.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LopHoc.cs">
-      <DependentUpon>E_Library.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MonHoc.cs">
-      <DependentUpon>E_Library.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NguoiDung.cs">
-      <DependentUpon>E_Library.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Role.cs">
-      <DependentUpon>E_Library.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>E_Library.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TaiKhoan.cs">
-      <DependentUpon>E_Library.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TaiLieu.cs">
-      <DependentUpon>E_Library.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TaiNguyen.cs">
-      <DependentUpon>E_Library.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TepRieng.cs">
-      <DependentUpon>E_Library.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ThongBao.cs">
-      <DependentUpon>E_Library.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TroGiup.cs">
-      <DependentUpon>E_Library.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -636,6 +631,7 @@
       <DependentUpon>E_Library.edmx</DependentUpon>
       <LastGenOutput>E_Library.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\E_Library.edmx.sql" />
     <Content Include="Models\E_Library.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>E_Library.edmx</DependentUpon>

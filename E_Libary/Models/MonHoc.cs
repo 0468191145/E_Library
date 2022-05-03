@@ -14,6 +14,12 @@ namespace E_Libary.Models
     
     public partial class MonHoc
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MonHoc()
+        {
+            this.GiangDays = new HashSet<GiangDay>();
+        }
+    
         public int Id { get; set; }
         public string MaMon { get; set; }
         public string TenMonHoc { get; set; }
@@ -21,5 +27,8 @@ namespace E_Libary.Models
         public string ToBoMon { get; set; }
         public string NienKhoa { get; set; }
         public string TinhTrang { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GiangDay> GiangDays { get; set; }
     }
 }

@@ -30,7 +30,8 @@ namespace E_Libary.Controllers
                                   m.MoTa,
                                   m.TinhTrang,
                                   SoTaiLieuChoDuyet = (from t in db.TaiLieux
-                                                       where t.MaMon == m.MaMon && t.TinhTrang == "Chờ phê duyệt"
+                                                       join bt in db.BaiGiangs_TaiNguyens on t.Ma equals bt.Id
+                                                       where bt.MaMon == m.MaMon && t.TinhTrang == "Chờ phê duyệt"
                                                        select new
                                                        {
                                                        }
@@ -52,6 +53,7 @@ namespace E_Libary.Controllers
             var monhoc = (from m in db.MonHocs
                           join g in db.GiangDays on m.MaMon equals g.MaMon
                           join a in db.NguoiDungs on g.MaGV equals a.MaNguoiDung
+                          where m.Id == id
                           select new
                           {
                               m.MaMon,

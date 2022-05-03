@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="E_LibraryModelStoreContainer" CdmEntityContainer="E_LibraryEntities1">
-    <EntitySetMapping Name="BaiGiangs">
-      <EntityTypeMapping TypeName="E_LibraryModel.BaiGiang">
-        <MappingFragment StoreEntitySet="BaiGiang">
+    <EntitySetMapping Name="BaiGiangs_TaiNguyens">
+      <EntityTypeMapping TypeName="E_LibraryModel.BaiGiangs_TaiNguyens">
+        <MappingFragment StoreEntitySet="BaiGiangs&amp;TaiNguyens">
           <ScalarProperty Name="KichThuoc" ColumnName="KichThuoc" />
           <ScalarProperty Name="NgayChinhSuaCuoi" ColumnName="NgayChinhSuaCuoi" />
           <ScalarProperty Name="NguoiChinhSua" ColumnName="NguoiChinhSua" />
           <ScalarProperty Name="ChuDe" ColumnName="ChuDe" />
-          <ScalarProperty Name="Lop" ColumnName="Lop" />
           <ScalarProperty Name="TenMon" ColumnName="TenMon" />
           <ScalarProperty Name="MaMon" ColumnName="MaMon" />
           <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="PhanLoai" ColumnName="PhanLoai" />
           <ScalarProperty Name="LoaiFile" ColumnName="LoaiFile" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
@@ -19,7 +19,7 @@
     </EntitySetMapping>
     <EntitySetMapping Name="DeThis">
       <EntityTypeMapping TypeName="E_LibraryModel.DeThi">
-        <MappingFragment StoreEntitySet="DeThi">
+        <MappingFragment StoreEntitySet="DeThis">
           <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
           <ScalarProperty Name="NguoiPheDuyet" ColumnName="NguoiPheDuyet" />
           <ScalarProperty Name="PheDuyet" ColumnName="PheDuyet" />
@@ -40,7 +40,7 @@
     </EntitySetMapping>
     <EntitySetMapping Name="GiangDays">
       <EntityTypeMapping TypeName="E_LibraryModel.GiangDay">
-        <MappingFragment StoreEntitySet="GiangDay">
+        <MappingFragment StoreEntitySet="GiangDays">
           <ScalarProperty Name="NienKhoa" ColumnName="NienKhoa" />
           <ScalarProperty Name="MaLop" ColumnName="MaLop" />
           <ScalarProperty Name="MaGV" ColumnName="MaGV" />
@@ -51,7 +51,7 @@
     </EntitySetMapping>
     <EntitySetMapping Name="HeThongThuViens">
       <EntityTypeMapping TypeName="E_LibraryModel.HeThongThuVien">
-        <MappingFragment StoreEntitySet="HeThongThuVien">
+        <MappingFragment StoreEntitySet="HeThongThuViens">
           <ScalarProperty Name="NienKhoa" ColumnName="NienKhoa" />
           <ScalarProperty Name="NgonNgu" ColumnName="NgonNgu" />
           <ScalarProperty Name="Email" ColumnName="Email" />
@@ -69,7 +69,7 @@
     </EntitySetMapping>
     <EntitySetMapping Name="LopHocs">
       <EntityTypeMapping TypeName="E_LibraryModel.LopHoc">
-        <MappingFragment StoreEntitySet="LopHoc">
+        <MappingFragment StoreEntitySet="LopHocs">
           <ScalarProperty Name="NienKhoa" ColumnName="NienKhoa" />
           <ScalarProperty Name="Lop" ColumnName="Lop" />
           <ScalarProperty Name="MaLop" ColumnName="MaLop" />
@@ -79,7 +79,7 @@
     </EntitySetMapping>
     <EntitySetMapping Name="MonHocs">
       <EntityTypeMapping TypeName="E_LibraryModel.MonHoc">
-        <MappingFragment StoreEntitySet="MonHoc">
+        <MappingFragment StoreEntitySet="MonHocs">
           <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
           <ScalarProperty Name="NienKhoa" ColumnName="NienKhoa" />
           <ScalarProperty Name="ToBoMon" ColumnName="ToBoMon" />
@@ -92,7 +92,7 @@
     </EntitySetMapping>
     <EntitySetMapping Name="NguoiDungs">
       <EntityTypeMapping TypeName="E_LibraryModel.NguoiDung">
-        <MappingFragment StoreEntitySet="NguoiDung">
+        <MappingFragment StoreEntitySet="NguoiDungs">
           <ScalarProperty Name="VaiTro" ColumnName="VaiTro" />
           <ScalarProperty Name="SDT" ColumnName="SDT" />
           <ScalarProperty Name="Email" ColumnName="Email" />
@@ -104,20 +104,17 @@
     </EntitySetMapping>
     <EntitySetMapping Name="PhanCongs">
       <EntityTypeMapping TypeName="E_LibraryModel.PhanCong">
-        <MappingFragment StoreEntitySet="PhanCong">
+        <MappingFragment StoreEntitySet="PhanCongs">
           <ScalarProperty Name="BaiGiang" ColumnName="BaiGiang" />
           <ScalarProperty Name="ChuDe" ColumnName="ChuDe" />
           <ScalarProperty Name="Lop" ColumnName="Lop" />
-          <ScalarProperty Name="MaGV" ColumnName="MaGV" />
-          <ScalarProperty Name="Mon" ColumnName="Mon" />
-          <ScalarProperty Name="MaMon" ColumnName="MaMon" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Roles">
       <EntityTypeMapping TypeName="E_LibraryModel.Role">
-        <MappingFragment StoreEntitySet="Role">
+        <MappingFragment StoreEntitySet="Roles">
           <ScalarProperty Name="NgayChinhSua" ColumnName="NgayChinhSua" />
           <ScalarProperty Name="NguoiDung" ColumnName="NguoiDung" />
           <ScalarProperty Name="PhanQuyen" ColumnName="PhanQuyen" />
@@ -145,7 +142,7 @@
     </EntitySetMapping>
     <EntitySetMapping Name="TaiKhoans">
       <EntityTypeMapping TypeName="E_LibraryModel.TaiKhoan">
-        <MappingFragment StoreEntitySet="TaiKhoan">
+        <MappingFragment StoreEntitySet="TaiKhoans">
           <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
           <ScalarProperty Name="PassWord" ColumnName="PassWord" />
           <ScalarProperty Name="Username" ColumnName="Username" />
@@ -155,42 +152,19 @@
     </EntitySetMapping>
     <EntitySetMapping Name="TaiLieux">
       <EntityTypeMapping TypeName="E_LibraryModel.TaiLieu">
-        <MappingFragment StoreEntitySet="TaiLieu">
+        <MappingFragment StoreEntitySet="TaiLieux">
           <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
           <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
           <ScalarProperty Name="NgayGui" ColumnName="NgayGui" />
-          <ScalarProperty Name="KichThuoc" ColumnName="KichThuoc" />
           <ScalarProperty Name="NguoiPheDuyet" ColumnName="NguoiPheDuyet" />
-          <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
-          <ScalarProperty Name="TenMon" ColumnName="TenMon" />
-          <ScalarProperty Name="MaMon" ColumnName="MaMon" />
-          <ScalarProperty Name="PhanLoai" ColumnName="PhanLoai" />
-          <ScalarProperty Name="TenTaiLieu" ColumnName="TenTaiLieu" />
-          <ScalarProperty Name="LoaiTep" ColumnName="LoaiTep" />
           <ScalarProperty Name="Ma" ColumnName="Ma" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TaiNguyens">
-      <EntityTypeMapping TypeName="E_LibraryModel.TaiNguyen">
-        <MappingFragment StoreEntitySet="TaiNguyen">
-          <ScalarProperty Name="KichThuoc" ColumnName="KichThuoc" />
-          <ScalarProperty Name="NgayChinhSuaCuoi" ColumnName="NgayChinhSuaCuoi" />
-          <ScalarProperty Name="NguoiChinhSua" ColumnName="NguoiChinhSua" />
-          <ScalarProperty Name="ChuDe" ColumnName="ChuDe" />
-          <ScalarProperty Name="Lop" ColumnName="Lop" />
-          <ScalarProperty Name="TenMon" ColumnName="TenMon" />
-          <ScalarProperty Name="MaMon" ColumnName="MaMon" />
-          <ScalarProperty Name="Ten" ColumnName="Ten" />
-          <ScalarProperty Name="LoaiFile" ColumnName="LoaiFile" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TepRiengs">
       <EntityTypeMapping TypeName="E_LibraryModel.TepRieng">
-        <MappingFragment StoreEntitySet="TepRieng">
+        <MappingFragment StoreEntitySet="TepRiengs">
           <ScalarProperty Name="KichThuoc" ColumnName="KichThuoc" />
           <ScalarProperty Name="NgaySuaLanCuoi" ColumnName="NgaySuaLanCuoi" />
           <ScalarProperty Name="NguoiSua" ColumnName="NguoiSua" />
@@ -202,7 +176,7 @@
     </EntitySetMapping>
     <EntitySetMapping Name="ThongBaos">
       <EntityTypeMapping TypeName="E_LibraryModel.ThongBao">
-        <MappingFragment StoreEntitySet="ThongBao">
+        <MappingFragment StoreEntitySet="ThongBaos">
           <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
           <ScalarProperty Name="NgayThongBao" ColumnName="NgayThongBao" />
           <ScalarProperty Name="NguoiGui" ColumnName="NguoiGui" />
@@ -216,7 +190,7 @@
     </EntitySetMapping>
     <EntitySetMapping Name="TroGiups">
       <EntityTypeMapping TypeName="E_LibraryModel.TroGiup">
-        <MappingFragment StoreEntitySet="TroGiup">
+        <MappingFragment StoreEntitySet="TroGiups">
           <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
           <ScalarProperty Name="NgayGui" ColumnName="NgayGui" />
           <ScalarProperty Name="NguoiGui" ColumnName="NguoiGui" />

@@ -18,19 +18,20 @@ namespace E_Libary.Controllers
             if (mon == null && gv == null&& tinhtrang==null&& ten==null)
             {
                 var get = (from c in db.TaiLieux
-                           join a in db.NguoiDungs on c.NguoiTao equals a.MaNguoiDung 
+                           join b in db.BaiGiangs_TaiNguyens on c.Ma equals b.Id
+                           join a in db.NguoiDungs on b.NguoiChinhSua equals a.MaNguoiDung 
                            select new
                            {
-                               c.Id,
-                               c.LoaiTep,
-                               c.TenTaiLieu,
-                               PhanLoai= c.PhanLoai==true?"bài giảng":"tài nguyên",
-                               c.TenMon,
+                               b.Id,
+                               b.LoaiFile,
+                               b.Ten,
+                               PhanLoai= b.PhanLoai==true?"bài giảng":"tài nguyên",
+                               b.TenMon,
                                NguoiGui= a.TenNguoiDung,
                                c.NguoiPheDuyet,
                                c.NgayGui,
                                c.TinhTrang,
-                               c.KichThuoc
+                               b.KichThuoc
                            });
                 return Ok(get);
             }
@@ -48,22 +49,22 @@ namespace E_Libary.Controllers
         {
 
             var get = (from c in db.TaiLieux
-                           join a in db.NguoiDungs on c.NguoiTao equals a.MaNguoiDung 
-                       where  c.TenTaiLieu.Contains(tukhoa)
+                       join b in db.BaiGiangs_TaiNguyens on c.Ma equals b.Id
+                       join a in db.NguoiDungs on b.NguoiChinhSua equals a.MaNguoiDung
+                       where  b.Ten.Contains(tukhoa)
                        select new
                        {
-                           c.Id,
-                           c.LoaiTep,
-                           c.TenTaiLieu,
-                           PhanLoai = c.PhanLoai == true ? "bài giảng" : "tài nguyên",
-                           c.TenMon,
+                           b.Id,
+                           b.LoaiFile,
+                           b.Ten,
+                           PhanLoai = b.PhanLoai == true ? "bài giảng" : "tài nguyên",
+                           b.TenMon,
                            NguoiGui = a.TenNguoiDung,
-
                            c.NguoiPheDuyet,
                            c.NgayGui,
                            c.TinhTrang,
-                           c.KichThuoc
-                       }).OrderBy(x => x.TenTaiLieu);
+                           b.KichThuoc
+                       }).OrderBy(x => x.Ten);
 
             return Ok(get);
         }
@@ -72,61 +73,52 @@ namespace E_Libary.Controllers
         {
 
             var get = (from c in db.TaiLieux
-                           join a in db.NguoiDungs on c.NguoiTao equals a.MaNguoiDung 
-                       where c.MaMon == mon || c.NguoiTao== gv|| c.TinhTrang== tinhtrang
+                       join b in db.BaiGiangs_TaiNguyens on c.Ma equals b.Id
+                       join a in db.NguoiDungs on b.NguoiChinhSua equals a.MaNguoiDung
+                       where b.MaMon == mon || b.NguoiChinhSua== gv|| c.TinhTrang== tinhtrang
                        select new
                        {
-                           c.Id,
-                           c.LoaiTep,
-                           c.TenTaiLieu,
-                           PhanLoai = c.PhanLoai == true ? "bài giảng" : "tài nguyên",
-                           c.TenMon,
+                           b.Id,
+                           b.LoaiFile,
+                           b.Ten,
+                           PhanLoai = b.PhanLoai == true ? "bài giảng" : "tài nguyên",
+                           b.TenMon,
                            NguoiGui = a.TenNguoiDung,
-
                            c.NguoiPheDuyet,
                            c.NgayGui,
                            c.TinhTrang,
-                           c.KichThuoc
-                       }).OrderBy(x => x.TenTaiLieu);
+                           b.KichThuoc
+                       }).OrderBy(x => x.Ten);
 
             return Ok(get);
 
         }
 
+       
         [Route("api/TaiLieux")]
         [HttpPut]
-        public IHttpActionResult PheDuyet(int id,string nguoipheduyet, string tinhtrang,string ghichu=null)
+        public IHttpActionResult PheDuyet(int id, string nguoipheduyet, string tinhtrang, string ghichu = null)
         {
             TaiLieu tailieu = db.TaiLieux.SingleOrDefault(n => n.Id == id);
-            try {
+            try
+            {
                 if (tailieu != null)
                 {
                     tailieu.NguoiPheDuyet = nguoipheduyet;
                     tailieu.TinhTrang = tinhtrang;
                     tailieu.GhiChu = ghichu;
                     db.SaveChanges();
-                    return Ok(tailieu);
+                    return Ok(tinhtrang);
                 }
                 return NotFound();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest("Lỗi");
             }
-            
 
         }
 
-       
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
 
         private bool TaiLieuExists(int id)
         {

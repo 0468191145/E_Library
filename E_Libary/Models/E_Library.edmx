@@ -5,22 +5,22 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="E_LibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="BaiGiang">
+        <EntityType Name="BaiGiangs&amp;TaiNguyens">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LoaiFile" Type="varchar" MaxLength="4" />
+          <Property Name="PhanLoai" Type="bit" />
           <Property Name="Ten" Type="nvarchar" MaxLength="50" />
           <Property Name="MaMon" Type="varchar" MaxLength="10" />
           <Property Name="TenMon" Type="nvarchar" MaxLength="50" />
-          <Property Name="Lop" Type="varchar" MaxLength="10" />
           <Property Name="ChuDe" Type="nvarchar" MaxLength="50" />
           <Property Name="NguoiChinhSua" Type="varchar" MaxLength="10" />
           <Property Name="NgayChinhSuaCuoi" Type="datetime" />
           <Property Name="KichThuoc" Type="float" />
         </EntityType>
-        <EntityType Name="DeThi">
+        <EntityType Name="DeThis">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -40,7 +40,7 @@
           <Property Name="NguoiPheDuyet" Type="varchar" MaxLength="10" />
           <Property Name="GhiChu" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="GiangDay">
+        <EntityType Name="GiangDays">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -50,7 +50,7 @@
           <Property Name="MaLop" Type="varchar" MaxLength="10" />
           <Property Name="NienKhoa" Type="nchar" MaxLength="10" />
         </EntityType>
-        <EntityType Name="HeThongThuVien">
+        <EntityType Name="HeThongThuViens">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -64,54 +64,51 @@
           <Property Name="DiaChiTruyCap" Type="varchar(max)" />
           <Property Name="SĐT" Type="char" MaxLength="10" />
           <Property Name="Email" Type="nvarchar(max)" />
-          <Property Name="NgonNgu" Type="varchar" MaxLength="20" />
+          <Property Name="NgonNgu" Type="nvarchar" MaxLength="50" />
           <Property Name="NienKhoa" Type="nchar" MaxLength="10" />
         </EntityType>
-        <EntityType Name="LopHoc">
+        <EntityType Name="LopHocs">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="MaLop" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MaLop" Type="varchar" MaxLength="10" />
+          <Property Name="MaLop" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Lop" Type="nvarchar" MaxLength="50" />
           <Property Name="NienKhoa" Type="nchar" MaxLength="10" />
         </EntityType>
-        <EntityType Name="MonHoc">
+        <EntityType Name="MonHocs">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="MaMon" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MaMon" Type="varchar" MaxLength="10" />
+          <Property Name="MaMon" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="TenMonHoc" Type="nvarchar" MaxLength="50" />
-          <Property Name="MoTa" Type="ntext" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
           <Property Name="ToBoMon" Type="nvarchar" MaxLength="50" />
           <Property Name="NienKhoa" Type="nchar" MaxLength="10" />
           <Property Name="TinhTrang" Type="nvarchar" MaxLength="20" />
         </EntityType>
-        <EntityType Name="NguoiDung">
+        <EntityType Name="NguoiDungs">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="MaNguoiDung" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MaNguoiDung" Type="varchar" MaxLength="10" />
+          <Property Name="MaNguoiDung" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="TenNguoiDung" Type="nvarchar" MaxLength="50" />
-          <Property Name="Email" Type="text" />
+          <Property Name="Email" Type="varchar(max)" />
           <Property Name="SDT" Type="char" MaxLength="10" />
           <Property Name="VaiTro" Type="int" />
         </EntityType>
-        <EntityType Name="PhanCong">
+        <EntityType Name="PhanCongs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MaMon" Type="varchar" MaxLength="10" />
-          <Property Name="Mon" Type="nvarchar" MaxLength="50" />
-          <Property Name="MaGV" Type="varchar" MaxLength="10" />
           <Property Name="Lop" Type="varchar" MaxLength="10" />
           <Property Name="ChuDe" Type="nvarchar" MaxLength="50" />
           <Property Name="BaiGiang" Type="int" />
         </EntityType>
-        <EntityType Name="Role">
+        <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -124,7 +121,7 @@
           <Property Name="De" Type="int" />
           <Property Name="ThongBao" Type="int" />
           <Property Name="PhanQuyen" Type="int" />
-          <Property Name="NguoiDung" Type="int" />
+          <Property Name="NguoiDung" Type="varchar" MaxLength="10" />
           <Property Name="NgayChinhSua" Type="datetime" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -137,7 +134,7 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="TaiKhoan">
+        <EntityType Name="TaiKhoans">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -146,40 +143,18 @@
           <Property Name="PassWord" Type="varchar" MaxLength="50" />
           <Property Name="MaNguoiDung" Type="varchar" MaxLength="10" />
         </EntityType>
-        <EntityType Name="TaiLieu">
+        <EntityType Name="TaiLieux">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Ma" Type="int" />
-          <Property Name="LoaiTep" Type="varchar" MaxLength="4" />
-          <Property Name="TenTaiLieu" Type="nvarchar" MaxLength="50" />
-          <Property Name="PhanLoai" Type="bit" />
-          <Property Name="MaMon" Type="varchar" MaxLength="10" />
-          <Property Name="TenMon" Type="nvarchar" MaxLength="50" />
-          <Property Name="NguoiTao" Type="varchar" MaxLength="10" />
           <Property Name="NguoiPheDuyet" Type="varchar" MaxLength="10" />
-          <Property Name="KichThuoc" Type="float" />
           <Property Name="NgayGui" Type="datetime" />
           <Property Name="TinhTrang" Type="nvarchar" MaxLength="20" />
           <Property Name="GhiChu" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="TaiNguyen">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LoaiFile" Type="varchar" MaxLength="4" />
-          <Property Name="Ten" Type="nvarchar" MaxLength="50" />
-          <Property Name="MaMon" Type="varchar" MaxLength="10" />
-          <Property Name="TenMon" Type="nvarchar" MaxLength="50" />
-          <Property Name="Lop" Type="varchar" MaxLength="10" />
-          <Property Name="ChuDe" Type="nvarchar" MaxLength="50" />
-          <Property Name="NguoiChinhSua" Type="varchar" MaxLength="10" />
-          <Property Name="NgayChinhSuaCuoi" Type="datetime" />
-          <Property Name="KichThuoc" Type="float" />
-        </EntityType>
-        <EntityType Name="TepRieng">
+        <EntityType Name="TepRiengs">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -190,7 +165,7 @@
           <Property Name="NgaySuaLanCuoi" Type="datetime" />
           <Property Name="KichThuoc" Type="float" />
         </EntityType>
-        <EntityType Name="ThongBao">
+        <EntityType Name="ThongBaos">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -203,7 +178,7 @@
           <Property Name="NgayThongBao" Type="datetime" />
           <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="TroGiup">
+        <EntityType Name="TroGiups">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -214,30 +189,157 @@
           <Property Name="NgayGui" Type="datetime" />
           <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_GiangDays_LopHocs">
+          <End Role="LopHocs" Type="Self.LopHocs" Multiplicity="0..1" />
+          <End Role="GiangDays" Type="Self.GiangDays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LopHocs">
+              <PropertyRef Name="MaLop" />
+            </Principal>
+            <Dependent Role="GiangDays">
+              <PropertyRef Name="MaLop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GiangDays_MonHocs">
+          <End Role="MonHocs" Type="Self.MonHocs" Multiplicity="0..1" />
+          <End Role="GiangDays" Type="Self.GiangDays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHocs">
+              <PropertyRef Name="MaMon" />
+            </Principal>
+            <Dependent Role="GiangDays">
+              <PropertyRef Name="MaMon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GiangDays_NguoiDungs">
+          <End Role="NguoiDungs" Type="Self.NguoiDungs" Multiplicity="0..1" />
+          <End Role="GiangDays" Type="Self.GiangDays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NguoiDungs">
+              <PropertyRef Name="MaNguoiDung" />
+            </Principal>
+            <Dependent Role="GiangDays">
+              <PropertyRef Name="MaGV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NguoiDungs_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="NguoiDungs" Type="Self.NguoiDungs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDungs">
+              <PropertyRef Name="VaiTro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PhanCongs_BaiGiangs&amp;TaiNguyens">
+          <End Role="BaiGiangs&amp;TaiNguyens" Type="Self.BaiGiangs&amp;TaiNguyens" Multiplicity="0..1" />
+          <End Role="PhanCongs" Type="Self.PhanCongs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BaiGiangs&amp;TaiNguyens">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhanCongs">
+              <PropertyRef Name="BaiGiang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaiKhoans_NguoiDungs">
+          <End Role="NguoiDungs" Type="Self.NguoiDungs" Multiplicity="0..1" />
+          <End Role="TaiKhoans" Type="Self.TaiKhoans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NguoiDungs">
+              <PropertyRef Name="MaNguoiDung" />
+            </Principal>
+            <Dependent Role="TaiKhoans">
+              <PropertyRef Name="MaNguoiDung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaiLieux_NguoiDungs">
+          <End Role="NguoiDungs" Type="Self.NguoiDungs" Multiplicity="0..1" />
+          <End Role="TaiLieux" Type="Self.TaiLieux" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NguoiDungs">
+              <PropertyRef Name="MaNguoiDung" />
+            </Principal>
+            <Dependent Role="TaiLieux">
+              <PropertyRef Name="NguoiPheDuyet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaiLieux_TaiNguyens1">
+          <End Role="BaiGiangs&amp;TaiNguyens" Type="Self.BaiGiangs&amp;TaiNguyens" Multiplicity="0..1" />
+          <End Role="TaiLieux" Type="Self.TaiLieux" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BaiGiangs&amp;TaiNguyens">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaiLieux">
+              <PropertyRef Name="Ma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="E_LibraryModelStoreContainer">
-          <EntitySet Name="BaiGiang" EntityType="Self.BaiGiang" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DeThi" EntityType="Self.DeThi" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GiangDay" EntityType="Self.GiangDay" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="HeThongThuVien" EntityType="Self.HeThongThuVien" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LopHoc" EntityType="Self.LopHoc" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MonHoc" EntityType="Self.MonHoc" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PhanCong" EntityType="Self.PhanCong" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BaiGiangs&amp;TaiNguyens" EntityType="Self.BaiGiangs&amp;TaiNguyens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeThis" EntityType="Self.DeThis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GiangDays" EntityType="Self.GiangDays" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HeThongThuViens" EntityType="Self.HeThongThuViens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LopHocs" EntityType="Self.LopHocs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MonHocs" EntityType="Self.MonHocs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDungs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhanCongs" EntityType="Self.PhanCongs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TaiLieu" EntityType="Self.TaiLieu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TaiNguyen" EntityType="Self.TaiNguyen" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TepRieng" EntityType="Self.TepRieng" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ThongBao" EntityType="Self.ThongBao" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TroGiup" EntityType="Self.TroGiup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaiLieux" EntityType="Self.TaiLieux" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TepRiengs" EntityType="Self.TepRiengs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThongBaos" EntityType="Self.ThongBaos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TroGiups" EntityType="Self.TroGiups" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_GiangDays_LopHocs" Association="Self.FK_GiangDays_LopHocs">
+            <End Role="LopHocs" EntitySet="LopHocs" />
+            <End Role="GiangDays" EntitySet="GiangDays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GiangDays_MonHocs" Association="Self.FK_GiangDays_MonHocs">
+            <End Role="MonHocs" EntitySet="MonHocs" />
+            <End Role="GiangDays" EntitySet="GiangDays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GiangDays_NguoiDungs" Association="Self.FK_GiangDays_NguoiDungs">
+            <End Role="NguoiDungs" EntitySet="NguoiDungs" />
+            <End Role="GiangDays" EntitySet="GiangDays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NguoiDungs_Roles" Association="Self.FK_NguoiDungs_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="NguoiDungs" EntitySet="NguoiDungs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PhanCongs_BaiGiangs&amp;TaiNguyens" Association="Self.FK_PhanCongs_BaiGiangs&amp;TaiNguyens">
+            <End Role="BaiGiangs&amp;TaiNguyens" EntitySet="BaiGiangs&amp;TaiNguyens" />
+            <End Role="PhanCongs" EntitySet="PhanCongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaiKhoans_NguoiDungs" Association="Self.FK_TaiKhoans_NguoiDungs">
+            <End Role="NguoiDungs" EntitySet="NguoiDungs" />
+            <End Role="TaiKhoans" EntitySet="TaiKhoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaiLieux_NguoiDungs" Association="Self.FK_TaiLieux_NguoiDungs">
+            <End Role="NguoiDungs" EntitySet="NguoiDungs" />
+            <End Role="TaiLieux" EntitySet="TaiLieux" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaiLieux_TaiNguyens1" Association="Self.FK_TaiLieux_TaiNguyens1">
+            <End Role="BaiGiangs&amp;TaiNguyens" EntitySet="BaiGiangs&amp;TaiNguyens" />
+            <End Role="TaiLieux" EntitySet="TaiLieux" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="E_LibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="E_LibraryEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="BaiGiangs" EntityType="E_LibraryModel.BaiGiang" />
+          <EntitySet Name="BaiGiangs_TaiNguyens" EntityType="E_LibraryModel.BaiGiangs_TaiNguyens" />
           <EntitySet Name="DeThis" EntityType="E_LibraryModel.DeThi" />
           <EntitySet Name="GiangDays" EntityType="E_LibraryModel.GiangDay" />
           <EntitySet Name="HeThongThuViens" EntityType="E_LibraryModel.HeThongThuVien" />
@@ -249,25 +351,58 @@
           <EntitySet Name="sysdiagrams" EntityType="E_LibraryModel.sysdiagram" />
           <EntitySet Name="TaiKhoans" EntityType="E_LibraryModel.TaiKhoan" />
           <EntitySet Name="TaiLieux" EntityType="E_LibraryModel.TaiLieu" />
-          <EntitySet Name="TaiNguyens" EntityType="E_LibraryModel.TaiNguyen" />
           <EntitySet Name="TepRiengs" EntityType="E_LibraryModel.TepRieng" />
           <EntitySet Name="ThongBaos" EntityType="E_LibraryModel.ThongBao" />
           <EntitySet Name="TroGiups" EntityType="E_LibraryModel.TroGiup" />
+          <AssociationSet Name="FK_PhanCongs_BaiGiangs_TaiNguyens" Association="E_LibraryModel.FK_PhanCongs_BaiGiangs_TaiNguyens">
+            <End Role="BaiGiangs_TaiNguyens" EntitySet="BaiGiangs_TaiNguyens" />
+            <End Role="PhanCong" EntitySet="PhanCongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaiLieux_TaiNguyens1" Association="E_LibraryModel.FK_TaiLieux_TaiNguyens1">
+            <End Role="BaiGiangs_TaiNguyens" EntitySet="BaiGiangs_TaiNguyens" />
+            <End Role="TaiLieu" EntitySet="TaiLieux" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GiangDays_LopHocs" Association="E_LibraryModel.FK_GiangDays_LopHocs">
+            <End Role="LopHoc" EntitySet="LopHocs" />
+            <End Role="GiangDay" EntitySet="GiangDays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GiangDays_MonHocs" Association="E_LibraryModel.FK_GiangDays_MonHocs">
+            <End Role="MonHoc" EntitySet="MonHocs" />
+            <End Role="GiangDay" EntitySet="GiangDays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GiangDays_NguoiDungs" Association="E_LibraryModel.FK_GiangDays_NguoiDungs">
+            <End Role="NguoiDung" EntitySet="NguoiDungs" />
+            <End Role="GiangDay" EntitySet="GiangDays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NguoiDungs_Roles" Association="E_LibraryModel.FK_NguoiDungs_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="NguoiDung" EntitySet="NguoiDungs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaiKhoans_NguoiDungs" Association="E_LibraryModel.FK_TaiKhoans_NguoiDungs">
+            <End Role="NguoiDung" EntitySet="NguoiDungs" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaiLieux_NguoiDungs" Association="E_LibraryModel.FK_TaiLieux_NguoiDungs">
+            <End Role="NguoiDung" EntitySet="NguoiDungs" />
+            <End Role="TaiLieu" EntitySet="TaiLieux" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="BaiGiang">
+        <EntityType Name="BaiGiangs_TaiNguyens">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LoaiFile" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="PhanLoai" Type="Boolean" />
           <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MaMon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="TenMon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Lop" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="ChuDe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NguoiChinhSua" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="NgayChinhSuaCuoi" Type="DateTime" Precision="3" />
           <Property Name="KichThuoc" Type="Double" />
+          <NavigationProperty Name="PhanCongs" Relationship="E_LibraryModel.FK_PhanCongs_BaiGiangs_TaiNguyens" FromRole="BaiGiangs_TaiNguyens" ToRole="PhanCong" />
+          <NavigationProperty Name="TaiLieux" Relationship="E_LibraryModel.FK_TaiLieux_TaiNguyens1" FromRole="BaiGiangs_TaiNguyens" ToRole="TaiLieu" />
         </EntityType>
         <EntityType Name="DeThi">
           <Key>
@@ -298,6 +433,9 @@
           <Property Name="MaGV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="MaLop" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="NienKhoa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="LopHoc" Relationship="E_LibraryModel.FK_GiangDays_LopHocs" FromRole="GiangDay" ToRole="LopHoc" />
+          <NavigationProperty Name="MonHoc" Relationship="E_LibraryModel.FK_GiangDays_MonHocs" FromRole="GiangDay" ToRole="MonHoc" />
+          <NavigationProperty Name="NguoiDung" Relationship="E_LibraryModel.FK_GiangDays_NguoiDungs" FromRole="GiangDay" ToRole="NguoiDung" />
         </EntityType>
         <EntityType Name="HeThongThuVien">
           <Key>
@@ -313,52 +451,56 @@
           <Property Name="DiaChiTruyCap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SĐT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="NgonNgu" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NgonNgu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NienKhoa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="LopHoc">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="MaLop" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MaLop" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MaLop" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Lop" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NienKhoa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="GiangDays" Relationship="E_LibraryModel.FK_GiangDays_LopHocs" FromRole="LopHoc" ToRole="GiangDay" />
         </EntityType>
         <EntityType Name="MonHoc">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="MaMon" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MaMon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MaMon" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="TenMonHoc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ToBoMon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NienKhoa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="TinhTrang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GiangDays" Relationship="E_LibraryModel.FK_GiangDays_MonHocs" FromRole="MonHoc" ToRole="GiangDay" />
         </EntityType>
         <EntityType Name="NguoiDung">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="MaNguoiDung" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MaNguoiDung" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MaNguoiDung" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="TenNguoiDung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="VaiTro" Type="Int32" />
+          <NavigationProperty Name="GiangDays" Relationship="E_LibraryModel.FK_GiangDays_NguoiDungs" FromRole="NguoiDung" ToRole="GiangDay" />
+          <NavigationProperty Name="Role" Relationship="E_LibraryModel.FK_NguoiDungs_Roles" FromRole="NguoiDung" ToRole="Role" />
+          <NavigationProperty Name="TaiKhoans" Relationship="E_LibraryModel.FK_TaiKhoans_NguoiDungs" FromRole="NguoiDung" ToRole="TaiKhoan" />
+          <NavigationProperty Name="TaiLieux" Relationship="E_LibraryModel.FK_TaiLieux_NguoiDungs" FromRole="NguoiDung" ToRole="TaiLieu" />
         </EntityType>
         <EntityType Name="PhanCong">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MaMon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Mon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MaGV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Lop" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="ChuDe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BaiGiang" Type="Int32" />
+          <NavigationProperty Name="BaiGiangs_TaiNguyens" Relationship="E_LibraryModel.FK_PhanCongs_BaiGiangs_TaiNguyens" FromRole="PhanCong" ToRole="BaiGiangs_TaiNguyens" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -373,8 +515,9 @@
           <Property Name="De" Type="Int32" />
           <Property Name="ThongBao" Type="Int32" />
           <Property Name="PhanQuyen" Type="Int32" />
-          <Property Name="NguoiDung" Type="Int32" />
+          <Property Name="NguoiDung" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="NgayChinhSua" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="NguoiDungs" Relationship="E_LibraryModel.FK_NguoiDungs_Roles" FromRole="Role" ToRole="NguoiDung" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -394,6 +537,7 @@
           <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MaNguoiDung" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NguoiDung" Relationship="E_LibraryModel.FK_TaiKhoans_NguoiDungs" FromRole="TaiKhoan" ToRole="NguoiDung" />
         </EntityType>
         <EntityType Name="TaiLieu">
           <Key>
@@ -401,32 +545,12 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Ma" Type="Int32" />
-          <Property Name="LoaiTep" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="TenTaiLieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PhanLoai" Type="Boolean" />
-          <Property Name="MaMon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="TenMon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiTao" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="NguoiPheDuyet" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="KichThuoc" Type="Double" />
           <Property Name="NgayGui" Type="DateTime" Precision="3" />
           <Property Name="TinhTrang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="TaiNguyen">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LoaiFile" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MaMon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="TenMon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Lop" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="ChuDe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiChinhSua" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="NgayChinhSuaCuoi" Type="DateTime" Precision="3" />
-          <Property Name="KichThuoc" Type="Double" />
+          <NavigationProperty Name="BaiGiangs_TaiNguyens" Relationship="E_LibraryModel.FK_TaiLieux_TaiNguyens1" FromRole="TaiLieu" ToRole="BaiGiangs_TaiNguyens" />
+          <NavigationProperty Name="NguoiDung" Relationship="E_LibraryModel.FK_TaiLieux_NguoiDungs" FromRole="TaiLieu" ToRole="NguoiDung" />
         </EntityType>
         <EntityType Name="TepRieng">
           <Key>
@@ -463,23 +587,119 @@
           <Property Name="NgayGui" Type="DateTime" Precision="3" />
           <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <Association Name="FK_PhanCongs_BaiGiangs_TaiNguyens">
+          <End Type="E_LibraryModel.BaiGiangs_TaiNguyens" Role="BaiGiangs_TaiNguyens" Multiplicity="0..1" />
+          <End Type="E_LibraryModel.PhanCong" Role="PhanCong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BaiGiangs_TaiNguyens">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PhanCong">
+              <PropertyRef Name="BaiGiang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaiLieux_TaiNguyens1">
+          <End Type="E_LibraryModel.BaiGiangs_TaiNguyens" Role="BaiGiangs_TaiNguyens" Multiplicity="0..1" />
+          <End Type="E_LibraryModel.TaiLieu" Role="TaiLieu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BaiGiangs_TaiNguyens">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaiLieu">
+              <PropertyRef Name="Ma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GiangDays_LopHocs">
+          <End Type="E_LibraryModel.LopHoc" Role="LopHoc" Multiplicity="0..1" />
+          <End Type="E_LibraryModel.GiangDay" Role="GiangDay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LopHoc">
+              <PropertyRef Name="MaLop" />
+            </Principal>
+            <Dependent Role="GiangDay">
+              <PropertyRef Name="MaLop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GiangDays_MonHocs">
+          <End Type="E_LibraryModel.MonHoc" Role="MonHoc" Multiplicity="0..1" />
+          <End Type="E_LibraryModel.GiangDay" Role="GiangDay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="MaMon" />
+            </Principal>
+            <Dependent Role="GiangDay">
+              <PropertyRef Name="MaMon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GiangDays_NguoiDungs">
+          <End Type="E_LibraryModel.NguoiDung" Role="NguoiDung" Multiplicity="0..1" />
+          <End Type="E_LibraryModel.GiangDay" Role="GiangDay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NguoiDung">
+              <PropertyRef Name="MaNguoiDung" />
+            </Principal>
+            <Dependent Role="GiangDay">
+              <PropertyRef Name="MaGV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NguoiDungs_Roles">
+          <End Type="E_LibraryModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="E_LibraryModel.NguoiDung" Role="NguoiDung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NguoiDung">
+              <PropertyRef Name="VaiTro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaiKhoans_NguoiDungs">
+          <End Type="E_LibraryModel.NguoiDung" Role="NguoiDung" Multiplicity="0..1" />
+          <End Type="E_LibraryModel.TaiKhoan" Role="TaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NguoiDung">
+              <PropertyRef Name="MaNguoiDung" />
+            </Principal>
+            <Dependent Role="TaiKhoan">
+              <PropertyRef Name="MaNguoiDung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaiLieux_NguoiDungs">
+          <End Type="E_LibraryModel.NguoiDung" Role="NguoiDung" Multiplicity="0..1" />
+          <End Type="E_LibraryModel.TaiLieu" Role="TaiLieu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NguoiDung">
+              <PropertyRef Name="MaNguoiDung" />
+            </Principal>
+            <Dependent Role="TaiLieu">
+              <PropertyRef Name="NguoiPheDuyet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="E_LibraryModelStoreContainer" CdmEntityContainer="E_LibraryEntities1">
-          <EntitySetMapping Name="BaiGiangs">
-            <EntityTypeMapping TypeName="E_LibraryModel.BaiGiang">
-              <MappingFragment StoreEntitySet="BaiGiang">
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="E_LibraryModelStoreContainer" CdmEntityContainer="E_LibraryEntities1">
+          <EntitySetMapping Name="BaiGiangs_TaiNguyens">
+            <EntityTypeMapping TypeName="E_LibraryModel.BaiGiangs_TaiNguyens">
+              <MappingFragment StoreEntitySet="BaiGiangs&amp;TaiNguyens">
                 <ScalarProperty Name="KichThuoc" ColumnName="KichThuoc" />
                 <ScalarProperty Name="NgayChinhSuaCuoi" ColumnName="NgayChinhSuaCuoi" />
                 <ScalarProperty Name="NguoiChinhSua" ColumnName="NguoiChinhSua" />
                 <ScalarProperty Name="ChuDe" ColumnName="ChuDe" />
-                <ScalarProperty Name="Lop" ColumnName="Lop" />
                 <ScalarProperty Name="TenMon" ColumnName="TenMon" />
                 <ScalarProperty Name="MaMon" ColumnName="MaMon" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="PhanLoai" ColumnName="PhanLoai" />
                 <ScalarProperty Name="LoaiFile" ColumnName="LoaiFile" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -487,7 +707,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="DeThis">
             <EntityTypeMapping TypeName="E_LibraryModel.DeThi">
-              <MappingFragment StoreEntitySet="DeThi">
+              <MappingFragment StoreEntitySet="DeThis">
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="NguoiPheDuyet" ColumnName="NguoiPheDuyet" />
                 <ScalarProperty Name="PheDuyet" ColumnName="PheDuyet" />
@@ -508,7 +728,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="GiangDays">
             <EntityTypeMapping TypeName="E_LibraryModel.GiangDay">
-              <MappingFragment StoreEntitySet="GiangDay">
+              <MappingFragment StoreEntitySet="GiangDays">
                 <ScalarProperty Name="NienKhoa" ColumnName="NienKhoa" />
                 <ScalarProperty Name="MaLop" ColumnName="MaLop" />
                 <ScalarProperty Name="MaGV" ColumnName="MaGV" />
@@ -519,7 +739,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="HeThongThuViens">
             <EntityTypeMapping TypeName="E_LibraryModel.HeThongThuVien">
-              <MappingFragment StoreEntitySet="HeThongThuVien">
+              <MappingFragment StoreEntitySet="HeThongThuViens">
                 <ScalarProperty Name="NienKhoa" ColumnName="NienKhoa" />
                 <ScalarProperty Name="NgonNgu" ColumnName="NgonNgu" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -537,7 +757,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="LopHocs">
             <EntityTypeMapping TypeName="E_LibraryModel.LopHoc">
-              <MappingFragment StoreEntitySet="LopHoc">
+              <MappingFragment StoreEntitySet="LopHocs">
                 <ScalarProperty Name="NienKhoa" ColumnName="NienKhoa" />
                 <ScalarProperty Name="Lop" ColumnName="Lop" />
                 <ScalarProperty Name="MaLop" ColumnName="MaLop" />
@@ -547,7 +767,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="MonHocs">
             <EntityTypeMapping TypeName="E_LibraryModel.MonHoc">
-              <MappingFragment StoreEntitySet="MonHoc">
+              <MappingFragment StoreEntitySet="MonHocs">
                 <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
                 <ScalarProperty Name="NienKhoa" ColumnName="NienKhoa" />
                 <ScalarProperty Name="ToBoMon" ColumnName="ToBoMon" />
@@ -560,7 +780,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="NguoiDungs">
             <EntityTypeMapping TypeName="E_LibraryModel.NguoiDung">
-              <MappingFragment StoreEntitySet="NguoiDung">
+              <MappingFragment StoreEntitySet="NguoiDungs">
                 <ScalarProperty Name="VaiTro" ColumnName="VaiTro" />
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -572,20 +792,17 @@
           </EntitySetMapping>
           <EntitySetMapping Name="PhanCongs">
             <EntityTypeMapping TypeName="E_LibraryModel.PhanCong">
-              <MappingFragment StoreEntitySet="PhanCong">
+              <MappingFragment StoreEntitySet="PhanCongs">
                 <ScalarProperty Name="BaiGiang" ColumnName="BaiGiang" />
                 <ScalarProperty Name="ChuDe" ColumnName="ChuDe" />
                 <ScalarProperty Name="Lop" ColumnName="Lop" />
-                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
-                <ScalarProperty Name="Mon" ColumnName="Mon" />
-                <ScalarProperty Name="MaMon" ColumnName="MaMon" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="E_LibraryModel.Role">
-              <MappingFragment StoreEntitySet="Role">
+              <MappingFragment StoreEntitySet="Roles">
                 <ScalarProperty Name="NgayChinhSua" ColumnName="NgayChinhSua" />
                 <ScalarProperty Name="NguoiDung" ColumnName="NguoiDung" />
                 <ScalarProperty Name="PhanQuyen" ColumnName="PhanQuyen" />
@@ -613,7 +830,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="TaiKhoans">
             <EntityTypeMapping TypeName="E_LibraryModel.TaiKhoan">
-              <MappingFragment StoreEntitySet="TaiKhoan">
+              <MappingFragment StoreEntitySet="TaiKhoans">
                 <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
                 <ScalarProperty Name="PassWord" ColumnName="PassWord" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
@@ -623,42 +840,19 @@
           </EntitySetMapping>
           <EntitySetMapping Name="TaiLieux">
             <EntityTypeMapping TypeName="E_LibraryModel.TaiLieu">
-              <MappingFragment StoreEntitySet="TaiLieu">
+              <MappingFragment StoreEntitySet="TaiLieux">
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
                 <ScalarProperty Name="NgayGui" ColumnName="NgayGui" />
-                <ScalarProperty Name="KichThuoc" ColumnName="KichThuoc" />
                 <ScalarProperty Name="NguoiPheDuyet" ColumnName="NguoiPheDuyet" />
-                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
-                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
-                <ScalarProperty Name="MaMon" ColumnName="MaMon" />
-                <ScalarProperty Name="PhanLoai" ColumnName="PhanLoai" />
-                <ScalarProperty Name="TenTaiLieu" ColumnName="TenTaiLieu" />
-                <ScalarProperty Name="LoaiTep" ColumnName="LoaiTep" />
                 <ScalarProperty Name="Ma" ColumnName="Ma" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TaiNguyens">
-            <EntityTypeMapping TypeName="E_LibraryModel.TaiNguyen">
-              <MappingFragment StoreEntitySet="TaiNguyen">
-                <ScalarProperty Name="KichThuoc" ColumnName="KichThuoc" />
-                <ScalarProperty Name="NgayChinhSuaCuoi" ColumnName="NgayChinhSuaCuoi" />
-                <ScalarProperty Name="NguoiChinhSua" ColumnName="NguoiChinhSua" />
-                <ScalarProperty Name="ChuDe" ColumnName="ChuDe" />
-                <ScalarProperty Name="Lop" ColumnName="Lop" />
-                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
-                <ScalarProperty Name="MaMon" ColumnName="MaMon" />
-                <ScalarProperty Name="Ten" ColumnName="Ten" />
-                <ScalarProperty Name="LoaiFile" ColumnName="LoaiFile" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TepRiengs">
             <EntityTypeMapping TypeName="E_LibraryModel.TepRieng">
-              <MappingFragment StoreEntitySet="TepRieng">
+              <MappingFragment StoreEntitySet="TepRiengs">
                 <ScalarProperty Name="KichThuoc" ColumnName="KichThuoc" />
                 <ScalarProperty Name="NgaySuaLanCuoi" ColumnName="NgaySuaLanCuoi" />
                 <ScalarProperty Name="NguoiSua" ColumnName="NguoiSua" />
@@ -670,7 +864,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="ThongBaos">
             <EntityTypeMapping TypeName="E_LibraryModel.ThongBao">
-              <MappingFragment StoreEntitySet="ThongBao">
+              <MappingFragment StoreEntitySet="ThongBaos">
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="NgayThongBao" ColumnName="NgayThongBao" />
                 <ScalarProperty Name="NguoiGui" ColumnName="NguoiGui" />
@@ -684,7 +878,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="TroGiups">
             <EntityTypeMapping TypeName="E_LibraryModel.TroGiup">
-              <MappingFragment StoreEntitySet="TroGiup">
+              <MappingFragment StoreEntitySet="TroGiups">
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="NgayGui" ColumnName="NgayGui" />
                 <ScalarProperty Name="NguoiGui" ColumnName="NguoiGui" />
@@ -695,8 +889,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
         </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -710,7 +903,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

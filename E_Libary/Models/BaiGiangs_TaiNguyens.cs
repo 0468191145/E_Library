@@ -12,17 +12,29 @@ namespace E_Libary.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class BaiGiang
+    public partial class BaiGiangs_TaiNguyens
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public BaiGiangs_TaiNguyens()
+        {
+            this.PhanCongs = new HashSet<PhanCong>();
+            this.TaiLieux = new HashSet<TaiLieu>();
+        }
+    
         public int Id { get; set; }
         public string LoaiFile { get; set; }
+        public Nullable<bool> PhanLoai { get; set; }
         public string Ten { get; set; }
         public string MaMon { get; set; }
         public string TenMon { get; set; }
-        public string Lop { get; set; }
         public string ChuDe { get; set; }
         public string NguoiChinhSua { get; set; }
         public Nullable<System.DateTime> NgayChinhSuaCuoi { get; set; }
         public Nullable<double> KichThuoc { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhanCong> PhanCongs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TaiLieu> TaiLieux { get; set; }
     }
 }

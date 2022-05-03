@@ -19,5 +19,9 @@ namespace E_Libary.Models
         public string MaGV { get; set; }
         public string MaLop { get; set; }
         public string NienKhoa { get; set; }
+    
+        public virtual LopHoc LopHoc { get; set; }
+        public virtual MonHoc MonHoc { get; set; }
+        public virtual NguoiDung NguoiDung { get; set; }
     }
 }

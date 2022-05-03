@@ -13,9 +13,9 @@ using E_Libary.Models;
 using Castle.Core.Smtp;
 using System.Threading.Tasks;
 using E_Libary.Mail;
+using E_Libary.Session;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
-using E_Libary.Session;
 
 namespace E_Libary.Controllers
 {
@@ -27,7 +27,6 @@ namespace E_Libary.Controllers
         private string _to = "ptai22092001@gmail.com"; 
         private string _subject = "Mã xác thực ";
         private string _body = "Mã xác thực của bạn là ";
-
 
 
         // GET: api/DangNhap/5
@@ -57,7 +56,7 @@ namespace E_Libary.Controllers
         [HttpPost]
         public IHttpActionResult PostXacNhan(string code)
         {
-            string ss = UserLogin.code;
+            string ss = UserLogin.code ;
             if(string.IsNullOrEmpty(ss))
             {
                 return BadRequest("Lỗi");

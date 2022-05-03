@@ -25,7 +25,7 @@ namespace E_Libary.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<BaiGiang> BaiGiangs { get; set; }
+        public virtual DbSet<BaiGiangs_TaiNguyens> BaiGiangs_TaiNguyens { get; set; }
         public virtual DbSet<DeThi> DeThis { get; set; }
         public virtual DbSet<GiangDay> GiangDays { get; set; }
         public virtual DbSet<HeThongThuVien> HeThongThuViens { get; set; }
@@ -37,7 +37,6 @@ namespace E_Libary.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<TaiLieu> TaiLieux { get; set; }
-        public virtual DbSet<TaiNguyen> TaiNguyens { get; set; }
         public virtual DbSet<TepRieng> TepRiengs { get; set; }
         public virtual DbSet<ThongBao> ThongBaos { get; set; }
         public virtual DbSet<TroGiup> TroGiups { get; set; }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="E_LibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="E_LibraryEntities1" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="BaiGiangs" EntityType="E_LibraryModel.BaiGiang" />
+    <EntitySet Name="BaiGiangs_TaiNguyens" EntityType="E_LibraryModel.BaiGiangs_TaiNguyens" />
     <EntitySet Name="DeThis" EntityType="E_LibraryModel.DeThi" />
     <EntitySet Name="GiangDays" EntityType="E_LibraryModel.GiangDay" />
     <EntitySet Name="HeThongThuViens" EntityType="E_LibraryModel.HeThongThuVien" />
@@ -13,25 +13,58 @@
     <EntitySet Name="sysdiagrams" EntityType="E_LibraryModel.sysdiagram" />
     <EntitySet Name="TaiKhoans" EntityType="E_LibraryModel.TaiKhoan" />
     <EntitySet Name="TaiLieux" EntityType="E_LibraryModel.TaiLieu" />
-    <EntitySet Name="TaiNguyens" EntityType="E_LibraryModel.TaiNguyen" />
     <EntitySet Name="TepRiengs" EntityType="E_LibraryModel.TepRieng" />
     <EntitySet Name="ThongBaos" EntityType="E_LibraryModel.ThongBao" />
     <EntitySet Name="TroGiups" EntityType="E_LibraryModel.TroGiup" />
+    <AssociationSet Name="FK_PhanCongs_BaiGiangs_TaiNguyens" Association="E_LibraryModel.FK_PhanCongs_BaiGiangs_TaiNguyens">
+      <End Role="BaiGiangs_TaiNguyens" EntitySet="BaiGiangs_TaiNguyens" />
+      <End Role="PhanCong" EntitySet="PhanCongs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaiLieux_TaiNguyens1" Association="E_LibraryModel.FK_TaiLieux_TaiNguyens1">
+      <End Role="BaiGiangs_TaiNguyens" EntitySet="BaiGiangs_TaiNguyens" />
+      <End Role="TaiLieu" EntitySet="TaiLieux" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GiangDays_LopHocs" Association="E_LibraryModel.FK_GiangDays_LopHocs">
+      <End Role="LopHoc" EntitySet="LopHocs" />
+      <End Role="GiangDay" EntitySet="GiangDays" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GiangDays_MonHocs" Association="E_LibraryModel.FK_GiangDays_MonHocs">
+      <End Role="MonHoc" EntitySet="MonHocs" />
+      <End Role="GiangDay" EntitySet="GiangDays" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GiangDays_NguoiDungs" Association="E_LibraryModel.FK_GiangDays_NguoiDungs">
+      <End Role="NguoiDung" EntitySet="NguoiDungs" />
+      <End Role="GiangDay" EntitySet="GiangDays" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NguoiDungs_Roles" Association="E_LibraryModel.FK_NguoiDungs_Roles">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="NguoiDung" EntitySet="NguoiDungs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaiKhoans_NguoiDungs" Association="E_LibraryModel.FK_TaiKhoans_NguoiDungs">
+      <End Role="NguoiDung" EntitySet="NguoiDungs" />
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaiLieux_NguoiDungs" Association="E_LibraryModel.FK_TaiLieux_NguoiDungs">
+      <End Role="NguoiDung" EntitySet="NguoiDungs" />
+      <End Role="TaiLieu" EntitySet="TaiLieux" />
+    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="BaiGiang">
+  <EntityType Name="BaiGiangs_TaiNguyens">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="LoaiFile" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="PhanLoai" Type="Boolean" />
     <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="MaMon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="TenMon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Lop" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="ChuDe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="NguoiChinhSua" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="NgayChinhSuaCuoi" Type="DateTime" Precision="3" />
     <Property Name="KichThuoc" Type="Double" />
+    <NavigationProperty Name="PhanCongs" Relationship="E_LibraryModel.FK_PhanCongs_BaiGiangs_TaiNguyens" FromRole="BaiGiangs_TaiNguyens" ToRole="PhanCong" />
+    <NavigationProperty Name="TaiLieux" Relationship="E_LibraryModel.FK_TaiLieux_TaiNguyens1" FromRole="BaiGiangs_TaiNguyens" ToRole="TaiLieu" />
   </EntityType>
   <EntityType Name="DeThi">
     <Key>
@@ -62,6 +95,9 @@
     <Property Name="MaGV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="MaLop" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="NienKhoa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="LopHoc" Relationship="E_LibraryModel.FK_GiangDays_LopHocs" FromRole="GiangDay" ToRole="LopHoc" />
+    <NavigationProperty Name="MonHoc" Relationship="E_LibraryModel.FK_GiangDays_MonHocs" FromRole="GiangDay" ToRole="MonHoc" />
+    <NavigationProperty Name="NguoiDung" Relationship="E_LibraryModel.FK_GiangDays_NguoiDungs" FromRole="GiangDay" ToRole="NguoiDung" />
   </EntityType>
   <EntityType Name="HeThongThuVien">
     <Key>
@@ -77,52 +113,56 @@
     <Property Name="DiaChiTruyCap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="SĐT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
     <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="NgonNgu" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NgonNgu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="NienKhoa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityType Name="LopHoc">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="MaLop" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MaLop" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MaLop" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Lop" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="NienKhoa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="GiangDays" Relationship="E_LibraryModel.FK_GiangDays_LopHocs" FromRole="LopHoc" ToRole="GiangDay" />
   </EntityType>
   <EntityType Name="MonHoc">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="MaMon" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MaMon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MaMon" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="TenMonHoc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ToBoMon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="NienKhoa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="TinhTrang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="GiangDays" Relationship="E_LibraryModel.FK_GiangDays_MonHocs" FromRole="MonHoc" ToRole="GiangDay" />
   </EntityType>
   <EntityType Name="NguoiDung">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="MaNguoiDung" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MaNguoiDung" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MaNguoiDung" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="TenNguoiDung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
     <Property Name="VaiTro" Type="Int32" />
+    <NavigationProperty Name="GiangDays" Relationship="E_LibraryModel.FK_GiangDays_NguoiDungs" FromRole="NguoiDung" ToRole="GiangDay" />
+    <NavigationProperty Name="Role" Relationship="E_LibraryModel.FK_NguoiDungs_Roles" FromRole="NguoiDung" ToRole="Role" />
+    <NavigationProperty Name="TaiKhoans" Relationship="E_LibraryModel.FK_TaiKhoans_NguoiDungs" FromRole="NguoiDung" ToRole="TaiKhoan" />
+    <NavigationProperty Name="TaiLieux" Relationship="E_LibraryModel.FK_TaiLieux_NguoiDungs" FromRole="NguoiDung" ToRole="TaiLieu" />
   </EntityType>
   <EntityType Name="PhanCong">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="MaMon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="Mon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="MaGV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Lop" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="ChuDe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="BaiGiang" Type="Int32" />
+    <NavigationProperty Name="BaiGiangs_TaiNguyens" Relationship="E_LibraryModel.FK_PhanCongs_BaiGiangs_TaiNguyens" FromRole="PhanCong" ToRole="BaiGiangs_TaiNguyens" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -137,8 +177,9 @@
     <Property Name="De" Type="Int32" />
     <Property Name="ThongBao" Type="Int32" />
     <Property Name="PhanQuyen" Type="Int32" />
-    <Property Name="NguoiDung" Type="Int32" />
+    <Property Name="NguoiDung" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="NgayChinhSua" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="NguoiDungs" Relationship="E_LibraryModel.FK_NguoiDungs_Roles" FromRole="Role" ToRole="NguoiDung" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -158,6 +199,7 @@
     <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="MaNguoiDung" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="NguoiDung" Relationship="E_LibraryModel.FK_TaiKhoans_NguoiDungs" FromRole="TaiKhoan" ToRole="NguoiDung" />
   </EntityType>
   <EntityType Name="TaiLieu">
     <Key>
@@ -165,32 +207,12 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Ma" Type="Int32" />
-    <Property Name="LoaiTep" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="TenTaiLieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="PhanLoai" Type="Boolean" />
-    <Property Name="MaMon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="TenMon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="NguoiTao" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="NguoiPheDuyet" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="KichThuoc" Type="Double" />
     <Property Name="NgayGui" Type="DateTime" Precision="3" />
     <Property Name="TinhTrang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="TaiNguyen">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="LoaiFile" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="MaMon" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="TenMon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Lop" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="ChuDe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="NguoiChinhSua" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="NgayChinhSuaCuoi" Type="DateTime" Precision="3" />
-    <Property Name="KichThuoc" Type="Double" />
+    <NavigationProperty Name="BaiGiangs_TaiNguyens" Relationship="E_LibraryModel.FK_TaiLieux_TaiNguyens1" FromRole="TaiLieu" ToRole="BaiGiangs_TaiNguyens" />
+    <NavigationProperty Name="NguoiDung" Relationship="E_LibraryModel.FK_TaiLieux_NguoiDungs" FromRole="TaiLieu" ToRole="NguoiDung" />
   </EntityType>
   <EntityType Name="TepRieng">
     <Key>
@@ -227,4 +249,100 @@
     <Property Name="NgayGui" Type="DateTime" Precision="3" />
     <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
+  <Association Name="FK_PhanCongs_BaiGiangs_TaiNguyens">
+    <End Type="E_LibraryModel.BaiGiangs_TaiNguyens" Role="BaiGiangs_TaiNguyens" Multiplicity="0..1" />
+    <End Type="E_LibraryModel.PhanCong" Role="PhanCong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaiGiangs_TaiNguyens">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhanCong">
+        <PropertyRef Name="BaiGiang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaiLieux_TaiNguyens1">
+    <End Type="E_LibraryModel.BaiGiangs_TaiNguyens" Role="BaiGiangs_TaiNguyens" Multiplicity="0..1" />
+    <End Type="E_LibraryModel.TaiLieu" Role="TaiLieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaiGiangs_TaiNguyens">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaiLieu">
+        <PropertyRef Name="Ma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GiangDays_LopHocs">
+    <End Type="E_LibraryModel.LopHoc" Role="LopHoc" Multiplicity="0..1" />
+    <End Type="E_LibraryModel.GiangDay" Role="GiangDay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LopHoc">
+        <PropertyRef Name="MaLop" />
+      </Principal>
+      <Dependent Role="GiangDay">
+        <PropertyRef Name="MaLop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GiangDays_MonHocs">
+    <End Type="E_LibraryModel.MonHoc" Role="MonHoc" Multiplicity="0..1" />
+    <End Type="E_LibraryModel.GiangDay" Role="GiangDay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MonHoc">
+        <PropertyRef Name="MaMon" />
+      </Principal>
+      <Dependent Role="GiangDay">
+        <PropertyRef Name="MaMon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GiangDays_NguoiDungs">
+    <End Type="E_LibraryModel.NguoiDung" Role="NguoiDung" Multiplicity="0..1" />
+    <End Type="E_LibraryModel.GiangDay" Role="GiangDay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="MaNguoiDung" />
+      </Principal>
+      <Dependent Role="GiangDay">
+        <PropertyRef Name="MaGV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NguoiDungs_Roles">
+    <End Type="E_LibraryModel.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="E_LibraryModel.NguoiDung" Role="NguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NguoiDung">
+        <PropertyRef Name="VaiTro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaiKhoans_NguoiDungs">
+    <End Type="E_LibraryModel.NguoiDung" Role="NguoiDung" Multiplicity="0..1" />
+    <End Type="E_LibraryModel.TaiKhoan" Role="TaiKhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="MaNguoiDung" />
+      </Principal>
+      <Dependent Role="TaiKhoan">
+        <PropertyRef Name="MaNguoiDung" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaiLieux_NguoiDungs">
+    <End Type="E_LibraryModel.NguoiDung" Role="NguoiDung" Multiplicity="0..1" />
+    <End Type="E_LibraryModel.TaiLieu" Role="TaiLieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="MaNguoiDung" />
+      </Principal>
+      <Dependent Role="TaiLieu">
+        <PropertyRef Name="NguoiPheDuyet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

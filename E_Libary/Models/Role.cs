@@ -14,6 +14,12 @@ namespace E_Libary.Models
     
     public partial class Role
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Role()
+        {
+            this.NguoiDungs = new HashSet<NguoiDung>();
+        }
+    
         public int Id { get; set; }
         public string TenVaiTro { get; set; }
         public string MoTa { get; set; }
@@ -23,7 +29,10 @@ namespace E_Libary.Models
         public Nullable<int> De { get; set; }
         public Nullable<int> ThongBao { get; set; }
         public Nullable<int> PhanQuyen { get; set; }
-        public Nullable<int> NguoiDung { get; set; }
+        public string NguoiDung { get; set; }
         public Nullable<System.DateTime> NgayChinhSua { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NguoiDung> NguoiDungs { get; set; }
     }
 }

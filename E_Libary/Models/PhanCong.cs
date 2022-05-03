@@ -15,11 +15,10 @@ namespace E_Libary.Models
     public partial class PhanCong
     {
         public int Id { get; set; }
-        public string MaMon { get; set; }
-        public string Mon { get; set; }
-        public string MaGV { get; set; }
         public string Lop { get; set; }
         public string ChuDe { get; set; }
         public Nullable<int> BaiGiang { get; set; }
+    
+        public virtual BaiGiangs_TaiNguyens BaiGiangs_TaiNguyens { get; set; }
     }
 }

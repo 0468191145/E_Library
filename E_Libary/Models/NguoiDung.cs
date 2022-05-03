@@ -14,11 +14,27 @@ namespace E_Libary.Models
     
     public partial class NguoiDung
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public NguoiDung()
+        {
+            this.GiangDays = new HashSet<GiangDay>();
+            this.TaiKhoans = new HashSet<TaiKhoan>();
+            this.TaiLieux = new HashSet<TaiLieu>();
+        }
+    
         public int Id { get; set; }
         public string MaNguoiDung { get; set; }
         public string TenNguoiDung { get; set; }
         public string Email { get; set; }
         public string SDT { get; set; }
         public Nullable<int> VaiTro { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GiangDay> GiangDays { get; set; }
+        public virtual Role Role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TaiKhoan> TaiKhoans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TaiLieu> TaiLieux { get; set; }
     }
 }

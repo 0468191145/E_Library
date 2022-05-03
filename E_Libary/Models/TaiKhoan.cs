@@ -18,5 +18,7 @@ namespace E_Libary.Models
         public string Username { get; set; }
         public string PassWord { get; set; }
         public string MaNguoiDung { get; set; }
+    
+        public virtual NguoiDung NguoiDung { get; set; }
     }
 }
