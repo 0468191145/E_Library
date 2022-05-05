@@ -45,21 +45,30 @@ namespace E_Libary.Controllers
                 var put = db.DeThis.SingleOrDefault(n => n.Id == id);
                 if (put != null)
                 {
-                    put.GhiChu= dethi.GhiChu;
-                    put.HinhThuc=dethi.HinhThuc;
-                    put.LoaiFile=dethi.LoaiFile; 
-                    put.MaMon=dethi.MaMon;
-                    put.TenMon = dethi.TenMon;
-                    put.NgayTao=dethi.NgayTao;
-                    put.NgayThi=dethi.NgayThi;
-                    put.NguoiPheDuyet=dethi.NguoiPheDuyet;
-                    put.NguoiTao=dethi.NguoiTao;
-                    put.NoiDung=dethi.NoiDung;
-                    put.PheDuyet=dethi.PheDuyet;
-                    put.TenDeThi=dethi.TenDeThi;
-                    put.ThoiLuong=dethi.ThoiLuong;
-                    put.TinhTrang=dethi.TinhTrang;
+                    
+                    put.TenDeThi = dethi.TenDeThi;
+                    db.SaveChanges();
+                    return Ok(put);
+                }
+                return BadRequest(ModelState);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ModelState);
+            }
+        }
+        [Route("api/DeThis/PheDuyet")]
+        [HttpPut]
+        public IHttpActionResult DuyetDeThi(int id, DeThi dethi)
+        {
+            try
+            {
+                var put = db.DeThis.SingleOrDefault(n => n.Id == id);
+                if (put != null)
+                {
 
+                    put.NguoiPheDuyet = dethi.NguoiPheDuyet;
+                    put.TinhTrang = dethi.TinhTrang;
                     db.SaveChanges();
                     return Ok(put);
                 }
@@ -79,6 +88,7 @@ namespace E_Libary.Controllers
             {
                 if (dethi != null)
                 {
+                    dethi.NgayTao = DateTime.Now;
                     db.DeThis.Add(dethi);
                     db.SaveChanges();
                     return Ok(dethi);

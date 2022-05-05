@@ -35,8 +35,7 @@
           <Property Name="ThoiLuong" Type="int" />
           <Property Name="NgayTao" Type="datetime" />
           <Property Name="NgayThi" Type="datetime" />
-          <Property Name="TinhTrang" Type="bit" />
-          <Property Name="PheDuyet" Type="bit" />
+          <Property Name="TinhTrang" Type="nvarchar" MaxLength="50" />
           <Property Name="NguoiPheDuyet" Type="varchar" MaxLength="10" />
           <Property Name="GhiChu" Type="nvarchar(max)" />
         </EntityType>
@@ -419,8 +418,7 @@
           <Property Name="ThoiLuong" Type="Int32" />
           <Property Name="NgayTao" Type="DateTime" Precision="3" />
           <Property Name="NgayThi" Type="DateTime" Precision="3" />
-          <Property Name="TinhTrang" Type="Boolean" />
-          <Property Name="PheDuyet" Type="Boolean" />
+          <Property Name="TinhTrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NguoiPheDuyet" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -710,7 +708,6 @@
               <MappingFragment StoreEntitySet="DeThis">
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="NguoiPheDuyet" ColumnName="NguoiPheDuyet" />
-                <ScalarProperty Name="PheDuyet" ColumnName="PheDuyet" />
                 <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
                 <ScalarProperty Name="NgayThi" ColumnName="NgayThi" />
                 <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />

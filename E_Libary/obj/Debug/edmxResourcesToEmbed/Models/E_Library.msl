@@ -22,7 +22,6 @@
         <MappingFragment StoreEntitySet="DeThis">
           <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
           <ScalarProperty Name="NguoiPheDuyet" ColumnName="NguoiPheDuyet" />
-          <ScalarProperty Name="PheDuyet" ColumnName="PheDuyet" />
           <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
           <ScalarProperty Name="NgayThi" ColumnName="NgayThi" />
           <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />

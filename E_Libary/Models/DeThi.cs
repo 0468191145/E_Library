@@ -25,8 +25,7 @@ namespace E_Libary.Models
         public Nullable<int> ThoiLuong { get; set; }
         public Nullable<System.DateTime> NgayTao { get; set; }
         public Nullable<System.DateTime> NgayThi { get; set; }
-        public Nullable<bool> TinhTrang { get; set; }
-        public Nullable<bool> PheDuyet { get; set; }
+        public string TinhTrang { get; set; }
         public string NguoiPheDuyet { get; set; }
         public string GhiChu { get; set; }
     }

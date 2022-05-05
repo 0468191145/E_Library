@@ -81,8 +81,7 @@
     <Property Name="ThoiLuong" Type="Int32" />
     <Property Name="NgayTao" Type="DateTime" Precision="3" />
     <Property Name="NgayThi" Type="DateTime" Precision="3" />
-    <Property Name="TinhTrang" Type="Boolean" />
-    <Property Name="PheDuyet" Type="Boolean" />
+    <Property Name="TinhTrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="NguoiPheDuyet" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>

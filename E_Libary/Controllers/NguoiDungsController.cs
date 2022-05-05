@@ -92,7 +92,10 @@ namespace E_Libary.Controllers
                     put.VaiTro = nguoidung.VaiTro;
 
                     db.SaveChanges();
-                    return Ok(put);
+                    return Ok(String.Format("TenNguoiDung: {0}, " +
+                        "Email: {1},"+
+                        "SDT: {2} "+
+                        "VaiTro: {3}",put.TenNguoiDung,put.Email,put.SDT,put.VaiTro ));
                 }
                 return BadRequest(ModelState);
             }
@@ -124,11 +127,11 @@ namespace E_Libary.Controllers
 
         // DELETE: api/NguoiDungs/5          Xóa người dùng
         [ResponseType(typeof(NguoiDung))]
-        public IHttpActionResult DeleteNguoiDung(int id)
+        public IHttpActionResult DeleteNguoiDung(string ma)
         {
             try
             {
-                var delete = db.NguoiDungs.SingleOrDefault(n => n.Id == id);
+                var delete = db.NguoiDungs.SingleOrDefault(n => n.MaNguoiDung == ma);
                 if (delete != null)
                 {
                     db.NguoiDungs.Remove(delete);

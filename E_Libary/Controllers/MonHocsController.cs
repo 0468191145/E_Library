@@ -73,7 +73,6 @@ namespace E_Libary.Controllers
                 var put = db.MonHocs.SingleOrDefault(n => n.Id == id);
                 if (put != null)
                 {
-                    put.MaMon = monhoc.MaMon;
                     put.TenMonHoc = monhoc.TenMonHoc;
                     put.MoTa = monhoc.MoTa;
                     put.NienKhoa = monhoc.NienKhoa;

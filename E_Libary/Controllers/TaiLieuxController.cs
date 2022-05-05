@@ -22,7 +22,7 @@ namespace E_Libary.Controllers
                            join a in db.NguoiDungs on b.NguoiChinhSua equals a.MaNguoiDung 
                            select new
                            {
-                               b.Id,
+                               c.Id,
                                b.LoaiFile,
                                b.Ten,
                                PhanLoai= b.PhanLoai==true?"bài giảng":"tài nguyên",

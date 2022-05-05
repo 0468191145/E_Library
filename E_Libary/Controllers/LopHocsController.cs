@@ -22,7 +22,13 @@ namespace E_Libary.Controllers
         {
             if (mon==null&&tenlop==null)
             {
-                return Ok(db.LopHocs);
+                var get = (from l in db.LopHocs
+                           select new
+                           {
+                               l.MaLop,
+                               l.Lop
+                           }).OrderBy(x => x.Lop);
+                return Ok(get);
             }
             else if(mon!=null)
             {

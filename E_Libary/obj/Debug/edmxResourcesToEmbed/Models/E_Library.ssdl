@@ -30,8 +30,7 @@
     <Property Name="ThoiLuong" Type="int" />
     <Property Name="NgayTao" Type="datetime" />
     <Property Name="NgayThi" Type="datetime" />
-    <Property Name="TinhTrang" Type="bit" />
-    <Property Name="PheDuyet" Type="bit" />
+    <Property Name="TinhTrang" Type="nvarchar" MaxLength="50" />
     <Property Name="NguoiPheDuyet" Type="varchar" MaxLength="10" />
     <Property Name="GhiChu" Type="nvarchar(max)" />
   </EntityType>
